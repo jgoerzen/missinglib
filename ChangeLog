@@ -2,6 +2,21 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-09-01 00:26:30 GMT	John Goerzen <jgoerzen@complete.org>	patch-69
+
+    Summary:
+      Work of BNFparseutil
+    Revision:
+      missinglib--head--0.0--patch-69
+
+
+    new files:
+     libsrc/bnf/bNFparseutil.ml
+
+    modified files:
+     ChangeLog libsrc/strutil/strutil.mli
+
+
 2004-08-31 21:47:44 GMT	John Goerzen <jgoerzen@complete.org>	patch-68
 
     Summary:

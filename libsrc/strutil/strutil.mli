@@ -79,7 +79,7 @@ val join: string -> string list -> string
 val string_of_char: char -> string
 
 (** Given a list of characters, returns a string composed of the characters
-in that list.  For instance, [string_of_charlist ['h'; 'i'] would produce
+in that list.  For instance, [string_of_charlist ['h'; 'i']] would produce
 ["hi"]. *)
 val string_of_charlist: char list -> string
 
