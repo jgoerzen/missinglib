@@ -44,4 +44,26 @@ and ctl = bparser
 
 and digit = range ~i:false [R(chr(0x30), chr(0x39))]
 
+and dquote = range ~i:false [C('\x22')];;
+
+let hexdig = bparser
+    [< x = digit >] -> x
+|   [< x = range ~i:true [R('A', 'F')] >] -> x
+
+and htab = range ~i:false [C('\x09')];;
+
+let sp = range ~i:false [C('\x20')];;
+
+let wsp = bparser
+  [< x = sp >] -> x
+| [< x = htab >] -> x;;
+
+let lwsp = optparse (bparser 
+                       [< x = wsp >] -> x
+                    |  [< crlf; x = wsp >] -> x)
 ;;
+
+let octet = range ~i:false [R('\x00', '\xff')]
+
+and vchar = range ~i:false [R('\x21', '\x7e')];;
+
