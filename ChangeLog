@@ -2,6 +2,22 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-04-27 14:41:50 GMT	John Goerzen <jgoerzen@complete.org>	patch-5
+
+    Summary:
+      Initial add of interpolation functions
+    Revision:
+      missinglib--head--0.0--patch-5
+
+
+    new files:
+     libsrc/configParser/configParser_interp.ml
+
+    modified files:
+     ChangeLog libsrc/Makefile
+     libsrc/configParser/configParser_interp_lexer.mll
+
+
 2004-04-27 13:25:50 GMT	John Goerzen <jgoerzen@complete.org>	patch-4
 
     Summary:

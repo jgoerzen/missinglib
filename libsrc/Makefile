@@ -28,6 +28,8 @@ SOURCES = strutil/strutil.mli strutil/strutil.ml \
 	  configParser/configParser_parser.mly \
 	  configParser/configParser_lexer.mll  \
 	  configParser/configParser_runparser.ml \
+	  configParser/configParser_interp_lexer.mll \
+	  configParser/configParser_interp.ml \
 	  configParser/configParser.mli \
 	  configParser/configParser.ml
 OCAMLDOC = ocamldoc -stars -sort -I strutil -I hashtblutil -I listutil -I lexingutil -I slice \
