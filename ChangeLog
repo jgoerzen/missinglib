@@ -2,6 +2,21 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-04-27 13:25:50 GMT	John Goerzen <jgoerzen@complete.org>	patch-4
+
+    Summary:
+      First draft of configparser interpolation lexer
+    Revision:
+      missinglib--head--0.0--patch-4
+
+
+    new files:
+     libsrc/configParser/configParser_interp_lexer.mll
+
+    modified files:
+     ChangeLog
+
+
 2004-04-23 18:36:10 GMT	John Goerzen <jgoerzen@complete.org>	patch-3
 
     Summary:
