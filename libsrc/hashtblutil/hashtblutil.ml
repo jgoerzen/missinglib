@@ -25,10 +25,10 @@ let merge original newitems =
   iter mergef newitems;;
 
 let map f hash = Hashtbl.fold (fun key value l -> (f key value) :: l) hash [];;
-let keys = map (fun key value -> key);;
-let values = map (fun key value -> value);;
-let items = map (fun key value -> key, value);;
-let length = keys %% List.length;;
+let keys hash = map (fun key value -> key) hash;;
+let values hash = map (fun key value -> value) hash;;
+let items hash = map (fun key value -> key, value) hash;;
+let length hash = keys %% List.length $ hash;;
 
 let convkeys hasht convfunc =
   let doconv key value = 

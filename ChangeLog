@@ -2,6 +2,18 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-06-16 01:47:12 GMT	John Goerzen <jgoerzen@complete.org>	patch-31
+
+    Summary:
+      Compiles again
+    Revision:
+      missinglib--head--0.0--patch-31
+
+
+    modified files:
+     ChangeLog libsrc/hashtblutil/hashtblutil.ml
+
+
 2004-06-15 22:02:51 GMT	John Goerzen <jgoerzen@complete.org>	patch-30
 
     Summary:
