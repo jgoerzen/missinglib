@@ -2,6 +2,24 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-08-03 19:20:44 GMT	John Goerzen <jgoerzen@complete.org>	patch-45
+
+    Summary:
+      Start of AnyDBM support
+    Revision:
+      missinglib--head--0.0--patch-45
+
+
+    new files:
+     libsrc/anydbm/.arch-ids/=id libsrc/anydbm/interface.ml
+
+    modified files:
+     ChangeLog libsrc/Makefile
+
+    new directories:
+     libsrc/anydbm libsrc/anydbm/.arch-ids
+
+
 2004-07-29 18:13:28 GMT	John Goerzen <jgoerzen@complete.org>	patch-44
 
     Summary:
