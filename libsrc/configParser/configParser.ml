@@ -26,12 +26,15 @@ open ConfigParser_interp;;
 exception DuplicateSectionError;;
 exception InvalidBool of string;;
 
-let deh default f =
-  try (f ()) with
-    Not_found as exc -> 
-      match default with
-        None -> raise exc 
-      | Some x -> x;;
+let process_default default convfunc loadfunc =
+  try convfunc(loadfunc ()) with
+  Not_found as exc ->
+    match default with
+    None -> raise exc
+    | Some x -> x;;
+
+let generic_def getfunc sname oname defaultval convfunc =
+  process_default defaultval convfunc (fun () -> getfunc sname oname);;
 
 class rawConfigParser = 
   object(self)
@@ -58,24 +61,31 @@ class rawConfigParser =
     method readstring istring =
       let ast = ConfigParser_runparser.parse_string istring in
       convert_list_file configfile self#optionxform ast 
-    method get ?default sname oname = deh default 
-      (fun () -> self#getdata sname oname)
+    method private def sname oname = generic_def (self#get) sname oname;;
+    method private def2 (defaultval:'a option) (convfunc:'b -> 'a) sname oname =
+      process_default defaultval convfunc (fun () -> self#getdata sname oname)
+      (*
+    method get ?default sname oname= 
+      self#def default (fun x -> x) sname oname *)
     method private getdata sname oname = 
       try
         find (self#section_h sname) (self#optionxform oname)
       with Not_found -> find (self#section_h "DEFAULT") (self#optionxform oname)
-    method getint ?default sname oname = deh default
-      (fun () -> int_of_string (self#get sname oname))
-    method getfloat sname oname = float_of_string (self#get sname oname)
+    method getint ?default sname oname =
+      self#def sname oname default int_of_string
+    method getfloat ?default sname oname = 
+      self#def sname oname default float_of_string
     method private getbool_isyes value =
       List.mem (String.lowercase value) ["1"; "yes"; "true"; "on"; "enabled"]
     method private getbool_isno value =
       List.mem (String.lowercase value) ["0"; "no"; "false"; "off"; "disabled"]
-    method getbool sname oname = 
-      let v = self#get sname oname in
+    method private bool_of_string v =
       if self#getbool_isyes v then true else
         if self#getbool_isno v then false else
           raise (InvalidBool v)
+
+    method getbool ?default sname oname = 
+      self#def sname oname default self#bool_of_string
     method items sname = items (self#section_h sname)
     method set sname oname value =
       let s = self#section_h sname in
