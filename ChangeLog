@@ -2,6 +2,18 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-04-29 18:25:23 GMT	John Goerzen <jgoerzen@complete.org>	patch-14
+
+    Summary:
+      Experimenting
+    Revision:
+      missinglib--head--0.0--patch-14
+
+
+    modified files:
+     ChangeLog libsrc/indexed/indexed.ml
+
+
 2004-04-29 16:40:13 GMT	John Goerzen <jgoerzen@complete.org>	patch-13
 
     Summary:
