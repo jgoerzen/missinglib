@@ -1,13 +1,13 @@
 Source: missinglib
 Priority: optional
 Maintainer: John Goerzen <jgoerzen@complete.org>
-Build-Depends: debhelper (>= 4.0.0), ocaml-nox (>= 3.08), ocaml-tools (>= 2004.07.26-1), ocaml-findlib (>= 1.0.4-1), libounit-ocaml-dev (>= 1.0.0-3)
+Build-Depends: debhelper (>= 4.0.0), ocaml-nox (>= 3.08.2), ocaml-tools (>= 2004.07.26-1), ocaml-findlib (>= 1.0.4-1), libounit-ocaml-dev (>= 1.0.1-2)
 Standards-Version: 3.6.0
 
 Package: libmissinglib-ocaml-dev
 Section: libdevel
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, ocaml-nox (>= 3.08), ocaml-findlib (>= 1.0.4-1)
+Depends: ${shlibs:Depends}, ${misc:Depends}, ocaml-nox (>= 3.08.2), ocaml-findlib (>= 1.0.4-1)
 Description: Library of utility functions for OCaml
  The following modules are are provided:
  .

@@ -2,6 +2,18 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-12-13 14:26:09 GMT	John Goerzen <jgoerzen@complete.org>	patch-80
+
+    Summary:
+      Tighten up control file deps for new ocaml version
+    Revision:
+      missinglib--head--0.0--patch-80
+
+
+    modified files:
+     ChangeLog debian/control
+
+
 2004-12-13 14:22:42 GMT	John Goerzen <jgoerzen@complete.org>	patch-79
 
     Summary:
