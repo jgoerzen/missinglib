@@ -199,18 +199,19 @@ class rawConfigParser :
     (** Returns the content of the requested option as a string.  Example:
       * [cp#get "sectname" "optname"].  If [optname] cannot be found in the
       * given section [sectname], searches for that option name in the section
-      * [DEFAULT].  If it is still not found there, raises [Not_found]. 
+      * [DEFAULT].  If it is still not found there and the optional
+      * default argument is given, return that; otherwise, raises [Not_found]. 
       * The other get* functions share this behavior. *)
-    method get: string -> string -> string
+    method get: ?default:string -> string -> string -> string
 
     (** Returns the content of the requestied option as an int. *)
-    method getint: string -> string -> int
+    method getint: ?default:int -> string -> string -> int
 
     (** Returns the content of the requested option as a float. *)
-    method getfloat: string -> string -> float
+    method getfloat: ?default:float -> string -> string -> float
 
     (** Returns the content of the requested option as a bool. *)
-    method getbool: string -> string -> bool
+    method getbool: ?default:bool -> string -> string -> bool
 
     (** Returns a list of (optionname, value) pairs representing the content of
     * the given section. *)

@@ -2,6 +2,19 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-04-27 21:52:54 GMT	John Goerzen <jgoerzen@complete.org>	patch-8
+
+    Summary:
+      Default support compiles
+    Revision:
+      missinglib--head--0.0--patch-8
+
+
+    modified files:
+     ChangeLog libsrc/configParser/configParser.ml
+     libsrc/configParser/configParser.mli
+
+
 2004-04-27 21:45:04 GMT	John Goerzen <jgoerzen@complete.org>	patch-7
 
     Summary:

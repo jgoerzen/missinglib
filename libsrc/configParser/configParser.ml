@@ -33,8 +33,8 @@ let process_default default convfunc loadfunc =
     None -> raise exc
     | Some x -> x;;
 
-let generic_def getfunc sname oname defaultval convfunc =
-  process_default defaultval convfunc (fun () -> getfunc sname oname);;
+let def default convfunc getfunc sname oname =
+  process_default default convfunc (fun () -> getfunc sname oname);;
 
 class rawConfigParser = 
   object(self)
@@ -61,20 +61,16 @@ class rawConfigParser =
     method readstring istring =
       let ast = ConfigParser_runparser.parse_string istring in
       convert_list_file configfile self#optionxform ast 
-    method private def sname oname = generic_def (self#get) sname oname;;
-    method private def2 (defaultval:'a option) (convfunc:'b -> 'a) sname oname =
-      process_default defaultval convfunc (fun () -> self#getdata sname oname)
-      (*
-    method get ?default sname oname= 
-      self#def default (fun x -> x) sname oname *)
     method private getdata sname oname = 
       try
         find (self#section_h sname) (self#optionxform oname)
       with Not_found -> find (self#section_h "DEFAULT") (self#optionxform oname)
+    method get ?default sname oname =
+      def default (fun x -> x) self#getdata sname oname
     method getint ?default sname oname =
-      self#def sname oname default int_of_string
+      def default int_of_string self#getdata sname oname
     method getfloat ?default sname oname = 
-      self#def sname oname default float_of_string
+      def default float_of_string self#getdata sname oname
     method private getbool_isyes value =
       List.mem (String.lowercase value) ["1"; "yes"; "true"; "on"; "enabled"]
     method private getbool_isno value =
@@ -85,7 +81,7 @@ class rawConfigParser =
           raise (InvalidBool v)
 
     method getbool ?default sname oname = 
-      self#def sname oname default self#bool_of_string
+      def default self#bool_of_string self#getdata sname oname
     method items sname = items (self#section_h sname)
     method set sname oname value =
       let s = self#section_h sname in
