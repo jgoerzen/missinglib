@@ -21,10 +21,19 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 This module is used to provide a generic interface to various local flat-file
 modules in OCaml.  Various AnyDBM implementations will use these definitions.
 
-You can use AnyDBM in your own code with code like this:
+You can use AnyDBM in your own code with code using something like this:
 
 {[open AnyDBM_Interface;;
-let db = AnyDBM_Dbm.opendbm "/tmp/foo" [Dbm_rdonly] 0o644;;
+let db = AnyDBM_String.dbm "/tmp/foo" 
+         {read = true; write = true; create = true} 0o644;;
+add db "key" "value";;
+close db;;]}
+
+You can use the Dbm compatibility features like this:
+
+{[open AnyDBM_Interface;;
+let db = AnyDBM_Dbm.opendbm "/tmp/foo" [Dbm_rdwr; Dbm_create] 0o644;;
+add db "key" "value";;
 close db;;]}
 
 Standard modules implementing the AnyDBM interface include:
@@ -35,6 +44,13 @@ The interface in this module is designed to be a drop-in replacement for the
 system's Dbm module.  You can, in fact, replace [open Dbm] with
 [open AnyDBM_Interface], and adjust your [opendbm] calls, and have a
 transparent replacement.
+
+Certain modules -- most notably those that do not work with files on disk --
+may not behave in the same way when created.
+
+{b NOTE:}  You {b MUST} call {!close} on a database handle if you want to 
+make sure changes are written.  Database module drivers may or may not
+write changes to disk if you do not call {!close}.
 *)
 
 (** {5 Typs and Exceptions} *)

@@ -21,7 +21,7 @@ open AnyDBMUtils;;
 open Hashtbl;;
 open Hashtblutil;;
 
-class anyDBM_String filename flag mode =
+class dbm filename flag mode =
 object(self)
   inherit AnyDBMUtils.anyDBM_Base flag
   val mainhash = begin
@@ -65,5 +65,5 @@ object(self)
 end;;
     
 let opendbm filename flag mode =
-  new anyDBM_String filename (flags_old_to_new flag) mode;;
+  new dbm filename (flags_old_to_new flag) mode;;
 

@@ -16,10 +16,18 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *)
 
+(** {6 Simple Storage of Hashtable-like objects on disk}
+
+This module is a wrapper around the persistent storage features in
+{!Hashtblutil}.  It is available on all systems.
+
+For usage examples, please see {!AnyDBM_Interface}.
+*)
+
 open AnyDBM_Interface;;
 open Hashtbl;;
 
-class anyDBM_String: string -> anydbm_open_flag -> int -> 
+class dbm: string -> anydbm_open_flag -> int -> 
 object
   inherit AnyDBMUtils.anyDBM_Base
   method private do_close: unit
@@ -30,4 +38,4 @@ object
   method private do_iter: (string -> string -> unit) -> unit
 end
 
-val opendbm : string -> open_flag list -> int -> anyDBM_String
+val opendbm : string -> open_flag list -> int -> dbm
