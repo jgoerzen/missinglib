@@ -32,7 +32,6 @@ let abspath ?startdir filename =
     s
   else
     let rec proclist l =
-      print_endline ("proclist " ^ (Strutil.join "/" l));
       match l with 
           [] -> []
         | "" :: xs -> proclist xs
@@ -43,7 +42,6 @@ let abspath ?startdir filename =
         | x :: xs -> x :: proclist xs
     in
     let rec modlist l =
-      print_endline ("modlist " ^ (Strutil.join "/" l));
       let pl = proclist l in
       if pl = l then l else modlist pl
     in

@@ -26,11 +26,30 @@ val list_of_dir: string -> string list
 (** Folds over the specified directory *)
 val fold_directory: ('a -> string -> 'a) -> 'a -> string -> 'a
 
-(** {recurse_cmd func name} will call {func stats name} on every entry
+(** {[recurse_stream name]} will create a stream that yields a (stats, name)
+  pair for every entry beneath the given filename (including the
+  filename itself.  It's a depth-first traversal.
+
+  The stats are included because a lot of people want to check on
+  the type of file for each file in the list.  You can see if you have
+  a directory by:
+  {[
+  match stats.st_kind with
+    S_DIR -> ...
+  | _ -> ...
+  ]}
+*)
+val recurse_stream: string -> (string * Unix.stats) Stream.t
+
+(** Same as {!Unixutil.recurse_stream}, but generates a list instead.
+Not recommended since this list could be *huge*. *)
+val recurse_list: string -> (string * Unix.stats) list
+
+(** {[recurse_cmd func name]} will call {[func stats name]} on every entry
   in or beneath name, which may specify a directory or a file.  For entries
   in subdirectires, the full relative path starting from name will be
   passed. *)
-val recurse_cmd: (Unix.stats -> string -> unit) -> string -> unit
+val recurse_cmd: (string * Unix.stats -> unit) -> string -> unit
 
 (** {6 Shell replacements}
 These functions replace standard shell functions with the same name.

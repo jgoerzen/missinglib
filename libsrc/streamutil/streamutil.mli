@@ -30,6 +30,13 @@ These functions create new streams. *)
 each line of the input file. *)
 val of_channel_lines: in_channel -> string Stream.t
 
+(** Given an input file descriptor and a blocksize, generates a stream
+that yields blocks of the given blocksize.  The very last block in the
+stream may have a lower size if the input does not end on an even block
+boundary.  All other blocks are guaranteed to match the given block size.
+*)
+val of_channel_blocks: in_channel -> int -> string Stream.t
+
 (** {6 Stream Conversion Utilities}
 
 These utilities work on streams, returning a new lazy stream that
@@ -42,6 +49,15 @@ val filter: ('a -> bool) -> 'a Stream.t -> 'a Stream.t
 (** Given a function, returns a new stream with the results of func
 applied to each element. *)
 val map: ('a -> 'b) -> 'a Stream.t -> 'b Stream.t
+
+(** Given a function, returns a new stream with the results of func
+applied to each element.
+
+Unlike {!Streamutil.map}, which expects func to take a single element and
+return a single element, this function expects func to take a single element
+and return a stream.  This is a powerful capability that allows func
+to grow or shrink the results of processing the single element. *)
+val map_stream: ('a -> 'b Stream.t) -> 'a Stream.t -> 'b Stream.t
 
 (** Converts a stream to a list.  WARNING: this will crash your program if
 used on infinite or very large streams.  Use only on finite streams! *)

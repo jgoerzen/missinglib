@@ -2,6 +2,22 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-06-18 01:14:09 GMT	John Goerzen <jgoerzen@complete.org>	patch-39
+
+    Summary:
+      Final doc fixes; this is 0.4.1
+    Revision:
+      missinglib--head--0.0--patch-39
+
+
+    modified files:
+     ChangeLog README debian/changelog debian/control
+     libsrc/fileutil/fileutil.ml libsrc/fileutil/fileutil.mli
+     libsrc/streamutil/streamutil.ml
+     libsrc/streamutil/streamutil.mli libsrc/unixutil/unixutil.ml
+     libsrc/unixutil/unixutil.mli test/testfileutil.ml
+
+
 2004-06-17 22:40:29 GMT	John Goerzen <jgoerzen@complete.org>	patch-38
 
     Summary:

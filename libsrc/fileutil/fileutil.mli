@@ -11,7 +11,7 @@ This module provides various helpful utilities for deailing with files.
 These functions work on file names.
 *)
 
-(** {abspath filename} returns the absolute path of filename.
+(** {[abspath filename]} returns the absolute path of filename.
   If startdir is given, it is used instead of the current working directory
   to work out relative paths.
 

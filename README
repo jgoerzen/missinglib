@@ -33,7 +33,8 @@ Sliceoper               Flexible subparts of arrays, lists, and strings
 
 Streamutil              Stream parser, conversion, and creation utilities
                         Provides features to create streams the yield
-                        the lines of an input channel, convert finite
+                        the lines of an input channel, the blocks of an
+                        input channel, convert finite
                         streams to lists, map and filter streams
                         (similar to those functions on lists), and
                         fold streams.
@@ -46,8 +47,9 @@ Strutil                 String-related utilities
 
 Unixutil                Operating system utilities
                         Includes functions to process directories
-                        (possibly recursively) and test for file
-                        existence.
+                        (possibly recursively), test for file
+                        existence, and an implementation of "rm"
+                        with "-r" and "-f" options.
 
 The entire library has no prerequisites save the OCaml standard library and
 findlib and is designed to install without complexity on a variety of

@@ -24,6 +24,21 @@ let rec of_channel_lines ifd =
       None -> [< >]
     | Some line -> [< 'line; of_channel_lines ifd >];;
 
+let of_channel_blocks ifd blocksize = 
+  let buf = String.make blocksize '\000' in
+  let rec forceread bytestoread = 
+    if bytestoread = 0 then 0 else begin
+      let len = input ifd buf (blocksize - bytestoread) bytestoread in
+      if len = 0 then len else len + forceread (bytestoread - len)
+    end
+  in
+  let rec worker () =
+    let len = forceread blocksize in
+    if len = 0 then [< >] else
+      [< '(String.sub buf 0 len); worker () >]
+  in
+  worker () ;;
+
 let rec filter func = parser
     [< 'x; xs >] -> if func x then [< 'x; filter func xs >] else 
       [< filter func xs >]
@@ -32,6 +47,10 @@ let rec filter func = parser
 let rec map func = parser
     [< 'x; xs >] -> [< 'func x; map func xs >]
   | [<  >] -> [< >];;
+
+let rec map_stream func = parser
+    [< 'x; xs >] -> [< func x; map_stream func xs >]
+  | [< >] -> [< >];;
 
 let rec to_list = parser
     [< 'x; xs >] -> x :: to_list xs

@@ -1,3 +1,4 @@
+(*pp camlp4o *)
 (* arch-tag: Unix module utilities
 * Copyright (c) 2004 John Goerzen
 *)
@@ -23,7 +24,22 @@ let list_of_dir dirname =
 let fold_directory func firstval dirname =
   List.fold_left func firstval (list_of_dir dirname);;
 
-let recurse_cmd f startname =
+let rec recurse_stream startname = 
+  let info = Unix.lstat startname in
+  match info.st_kind with
+      S_DIR -> [< (Streamutil.map_stream (fun entry -> 
+                                    recurse_stream (startname ^ "/" ^ entry))
+                    (Stream.of_list (list_of_dir startname)));
+                  '(startname, info) >]
+    | _ -> [< '(startname, info) >]
+;;
+               
+let recurse_cmd f startname = Stream.iter f (recurse_stream startname);;
+
+let recurse_list startname = Streamutil.to_list (recurse_stream startname);;
+
+(*
+let recurse_cmd_old f startname =
   let rec recurse_cmd_do f startname =
     let info = Unix.lstat startname in
     match info.st_kind with
@@ -36,10 +52,11 @@ let recurse_cmd f startname =
     startname 
   in
   recurse_cmd_do f startname;;
+*)
 
 (* exception RMError of string;; *)
 let rm ?(recursive=false) ?(force=false) filename =
-  let recunl info name = 
+  let recunl (name, info) = 
     try
       if info.st_kind = S_DIR then 
         Unix.rmdir name
@@ -52,6 +69,6 @@ let rm ?(recursive=false) ?(force=false) filename =
     if recursive then
       recurse_cmd recunl filename
     else
-      recunl (Unix.lstat filename) filename
+      recunl (filename, Unix.lstat filename)
   with (Unix.Unix_error _) as exc ->
     if not force then raise exc;;

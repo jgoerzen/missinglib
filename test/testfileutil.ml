@@ -21,7 +21,7 @@ open Testutil;;
 open Fileutil;;
 
 let test_abspath () =
-  mapassert_equal_str "abspath" (fun x -> print_endline x; abspath ~startdir:"/usr/share/doc/m/html" x)
+  mapassert_equal_str "abspath" (fun x -> abspath ~startdir:"/usr/share/doc/m/html" x)
     ["index.html", "/usr/share/doc/m/html/index.html";
      ".", "/usr/share/doc/m/html";
      "", "/usr/share/doc/m/html";
@@ -42,10 +42,10 @@ let test_abspath () =
      "img/dir/../foo.gif", "/usr/share/doc/m/html/img/foo.gif";
      "./img/dir/.././foo.gif", "/usr/share/doc/m/html/img/foo.gif";
      "../../../../..", "/";
-(*     "../../../../../", "/";
+     "../../../../../", "/";
      "../../../../../.", "/";
      "../../../../.././", "/";
-     "../../../..", "/usr" *)];;
+     "../../../..", "/usr"];;
 
 let suite = "testfileutil" >:::
               ["abspath" >:: test_abspath];;
