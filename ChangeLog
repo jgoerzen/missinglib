@@ -2,6 +2,24 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-06-05 16:52:07 GMT	John Goerzen <jgoerzen@complete.org>	patch-27
+
+    Summary:
+      Removed file/ directory -- was never built anyway
+    Revision:
+      missinglib--head--0.0--patch-27
+
+
+    removed files:
+     libsrc/file/.arch-ids/=id libsrc/file/file.ml
+
+    modified files:
+     ChangeLog
+
+    removed directories:
+     libsrc/file libsrc/file/.arch-ids
+
+
 2004-06-05 16:51:14 GMT	John Goerzen <jgoerzen@complete.org>	patch-26
 
     Summary:
