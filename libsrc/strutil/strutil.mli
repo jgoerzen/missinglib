@@ -78,3 +78,7 @@ val join: string -> string list -> string
 *)
 val string_of_char: char -> string
 
+(** Given a string and a length, truncates the string to have, at most,
+len characters.  If the string is shorter that the given len, it is 
+returns unmodified. *)
+val trunc: string -> int -> string

@@ -48,3 +48,7 @@ let join = String.concat;;
 
 let split_ws instr = Str.split wsregexp (strip instr);;
 
+let trunc x len =
+  if String.length x > len then begin
+    String.sub x 0 len
+  else x;;

@@ -1,3 +1,15 @@
+missinglib (0.4.9) unstable; urgency=low
+
+  * Added new Strutil.trunc function.
+
+ -- John Goerzen <jgoerzen@complete.org>  Fri, 20 Aug 2004 09:36:38 -0500
+
+missinglib (0.4.8) unstable; urgency=medium
+
+  * New upload for testing.  Sigh.
+
+ -- John Goerzen <jgoerzen@complete.org>  Mon,  9 Aug 2004 08:44:18 -0500
+
 missinglib (0.4.7) unstable; urgency=low
 
   * Added new abspath and isdir functions to Unixutil.

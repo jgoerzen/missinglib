@@ -2,6 +2,19 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-08-20 14:37:15 GMT	John Goerzen <jgoerzen@complete.org>	patch-60
+
+    Summary:
+      Added new Strutil.trunc function.
+    Revision:
+      missinglib--head--0.0--patch-60
+
+
+    modified files:
+     ChangeLog debian/changelog libsrc/strutil/strutil.ml
+     libsrc/strutil/strutil.mli
+
+
 2004-08-06 21:54:36 GMT	John Goerzen <jgoerzen@complete.org>	patch-59
 
     Summary:
