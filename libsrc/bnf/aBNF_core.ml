@@ -22,25 +22,25 @@ open Streamutil;;
 open BNFparseutil;;
 
 let alpha = bparser
-    [< x = (range [R(chr(0x41), chr(0x5a)); R(chr(0x61), chr(0x7a))]) >]
+    [< x = (range ~i:false [R(chr(0x41), chr(0x5a)); R(chr(0x61), chr(0x7a))]) >]
               -> x
 
 and bit = bparser
-    [< x = range [C '0'; C '1'] >] -> x
+    [< x = range ~i:false [C '0'; C '1'] >] -> x
 
 and char = bparser
-    [< x = range [R(chr(0x01), chr(0x7f))] >] -> x
+    [< x = range ~i:false [R(chr(0x01), chr(0x7f))] >] -> x
 
 and cr = bparser
     [< ''\x0d' >] -> '\x0d';;
 
-let lf = range [C('\x0a')];;
+let lf = range ~i:false [C('\x0a')];;
 
 let crlf = bparser
     [< x = cr; y = lf >] -> string_of_charlist([x; y]) 
 
 and ctl = bparser
-    [< x = range [R(chr(0x00), chr(0x1f)); C(chr(0x7f))] >] -> x
+    [< x = range ~i:false [R(chr(0x00), chr(0x1f)); C(chr(0x7f))] >] -> x
 
 and digit = range ~i:false [R(chr(0x30), chr(0x39))]
 
