@@ -255,8 +255,6 @@ class configParser :
   object
     inherit rawConfigParser
 
-    method get: ?default:string -> ?raw:bool -> ?idepth:int -> 
-      ?extravars:(string, string) Hashtbl.t 
-           -> string -> string -> string
+    method get: ?default:string -> string -> string -> string
   end
       
