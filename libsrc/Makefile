@@ -20,6 +20,7 @@ SOURCES = compose/compose.mli compose/compose.ml \
 	  compose/composeoper.mli compose/composeoper.ml \
 	  strutil/strutil.mli strutil/strutil.ml \
 	  streamutil/streamutil.mli streamutil/streamutil.ml \
+	  bnf/bNFsupport.ml bnf/bNFsupport.mli \
 	  hashtblutil/hashtblutil.mli hashtblutil/hashtblutil.ml \
 	listutil/listutil.mli listutil/listutil.ml \
 	  lexingutil/lexingutil.mli lexingutil/lexingutil.ml \
@@ -45,7 +46,7 @@ SOURCES = compose/compose.mli compose/compose.ml \
 
 INCLDIRS = -I strutil -I compose -I hashtblutil -I listutil -I lexingutil -I slice \
 	   -I anyDBM \
-	    -I configParser -I fileutil -I unixutil -I streamutil
+	    -I configParser -I fileutil -I unixutil -I streamutil -I bnf
 	    
 OCAMLDOC = ocamldoc -pp camlp4o -stars -sort $(INCLDIRS)
 #LIBS = str
@@ -55,6 +56,7 @@ DOC_FILES := compose/compose.mli compose/compose.ml \
 	compose/composeoper.mli compose/composeoper.ml \
 	strutil/strutil.mli strutil/strutil.ml \
 	streamutil/streamutil.mli streamutil/streamutil.ml \
+	bnf/bNFsupport.mli bnf/bNFsupport.ml \
 	hashtblutil/hashtblutil.mli hashtblutil/hashtblutil.ml \
 	hashtblutil/hashtbloper.mli hashtblutil/hashtbloper.ml \
 	listutil/listutil.mli listutil/listutil.ml \

@@ -2,6 +2,21 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-08-31 17:54:50 GMT	John Goerzen <jgoerzen@complete.org>	patch-63
+
+    Summary:
+      First try of lazyStream class
+    Revision:
+      missinglib--head--0.0--patch-63
+
+
+    new files:
+     libsrc/bnf/bNFsupport.mli
+
+    modified files:
+     ChangeLog libsrc/Makefile libsrc/bnf/bNFsupport.ml
+
+
 2004-08-31 17:21:26 GMT	John Goerzen <jgoerzen@complete.org>	patch-62
 
     Summary:
