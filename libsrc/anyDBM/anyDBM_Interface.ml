@@ -16,7 +16,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *)
 
-type open_flag = Dbm_rdonly | Dbm_wronly | Dbm_rdwr | Dbm_create;;
+type open_flag = { read: bool; write: bool; create: bool };;
 
 exception Dbm_error of string;;
 
@@ -43,3 +43,36 @@ let add db = db#add;;
 let replace db = db#replace;;
 let remove db = db#remove;;
 let iter func (db:t) = db#iter func;;
+
+class virtual anyDBM_Base (filename_parm:string) 
+  (flag_parm:open_flag) (mode_parm:int) =
+object (self)
+  (* inherit t *)
+  val mutable filename = filename_parm
+  val mutable flag = flag_parm
+  val mutable mode = mode_parm
+                       
+  method private can_write = flag.write
+  method private can_read = flag.read
+  method private assert_write =
+    if not self#can_write then raise (Dbm_error "database not open for writing")
+  method private assert_read = 
+    if not self#can_read then raise (Dbm_error "database not open for reading")
+
+  method private virtual do_add : string -> string -> unit
+  method add key value = self#assert_write; self#do_add key value
+
+
+  method private virtual do_find: string -> string
+  method find key = self#assert_read; self#do_find key
+
+  method private virtual do_replace: string -> string -> unit
+  method replace key value = self#assert_write; self#do_replace key value
+
+  method private virtual do_remove: string -> unit
+  method remove key = self#assert_write; self#do_remove key
+                       
+  method private virtual do_iter: (string -> string -> unit) -> unit
+  method iter f = self#assert_read; self#do_iter f
+end;;
+

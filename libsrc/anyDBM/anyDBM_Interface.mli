@@ -40,12 +40,19 @@ transparent replacement.
 (** {5 Typs and Exceptions} *)
 
 (** Flags used for opening a database. *)
-type open_flag = 
+type open_flag = {
+  read: bool;                       (** Whether reading is permitted *)
+  write: bool;                      (** Whether writing is permitted *)
+  create: bool;                     (** Whether to create a non-existing file *)
+}
+    
+(*
+type old_open_flag = 
   | Dbm_rdonly                          (** Read-only mode *)
   | Dbm_wronly                          (** Write-only mode *)
   | Dbm_rdwr                            (** Read/write mode *)
   | Dbm_create                          (** Create DB if it doesn't exist *)
-
+*)
 class type t = 
 object
   method close : unit
@@ -87,3 +94,29 @@ val remove: t -> string -> unit
 (** [iter f db] applies f to each (key, data) pair in the database db.  f
   receives key as frist argument and data as second argument. *)
 val iter: (string -> string -> unit) -> t -> unit
+
+(** {5 Utilities for AnyDBM module implementators} *)
+
+(** Utility function for implementators *)
+class virtual anyDBM_Base : string -> open_flag -> int ->
+object
+  method private can_write : bool
+  method private can_read : bool
+  method private assert_write : unit
+  method private assert_read : unit
+    
+  method private virtual do_add : string -> string -> unit
+  method add: string -> string -> unit
+
+  method private virtual do_find: string -> string
+  method find: string -> string
+
+  method private virtual do_replace: string -> string -> unit
+  method replace: string -> string -> unit
+
+  method private virtual do_remove: string -> unit
+  method remove: string -> unit
+
+  method private virtual do_iter: (string -> string -> unit) -> unit
+  method iter: (string -> string -> unit) -> unit
+end
