@@ -2,6 +2,19 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-07-29 18:13:28 GMT	John Goerzen <jgoerzen@complete.org>	patch-44
+
+    Summary:
+      Switched to comma for separator
+    Revision:
+      missinglib--head--0.0--patch-44
+
+
+    modified files:
+     ChangeLog libsrc/hashtblutil/hashtblutil.ml
+     test/testhashtblutil.ml
+
+
 2004-07-29 18:09:58 GMT	John Goerzen <jgoerzen@complete.org>	patch-43
 
     Summary:
