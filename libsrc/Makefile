@@ -43,7 +43,9 @@ SOURCES = compose/compose.mli compose/compose.ml \
 	  anyDBM/anyDBM.mli \
 	  anyDBM/anyDBM.ml \
 	  anyDBM/anyDBM_String.mli \
-	  anyDBM/anyDBM_String.ml
+	  anyDBM/anyDBM_String.ml \
+	  bnf/bNFparseutil.mli \
+	  bnf/bNFparseutil.mli
 
 
 INCLDIRS = -I strutil -I compose -I hashtblutil -I listutil -I lexingutil -I slice \
@@ -72,6 +74,8 @@ DOC_FILES := compose/compose.mli compose/compose.ml \
 	anyDBM/anyDBM.ml \
 	anyDBM/anyDBM_String.mli \
 	anyDBM/anyDBM_String.ml \
+	bnf/bNFparseutil.mli \
+	bnf/bNFparseutil.ml \
 	camlp4doc/pa_bparser.mli 
 
 MLIFILES := $(filter %.mli,$(SOURCES))

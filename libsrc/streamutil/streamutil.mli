@@ -100,7 +100,7 @@ These functions are used to parse streams. *)
     element.
 
     @param func The parser function.  Will be called repeatedly until
-                Stream.Error is raised.
+                Stream.Failure is raised.
     @param accum Accumulator -- pass [] to it to start with.
     @param args Passed to func.
     @return A list of return values from func; may be empty.

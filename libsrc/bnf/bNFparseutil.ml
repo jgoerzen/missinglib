@@ -25,15 +25,15 @@ let optparse func args =
   Strutil.string_of_charlist (Streamutil.optparse func [] args);;
 
 let optparse_1 funchead args =
-  Strutil.string_of_charlist (Streamutil.optparse funchead funchead [] args);;
+  Strutil.string_of_charlist (Streamutil.optparse_1 funchead funchead [] args);;
 
-let test_char_patt patt c = match c with
-    C(x) -> c = x
-  | R(x, y) -> x <= c && c <= y;;
+let test_char_patt patt c = match patt with
+    C x -> c = x
+  | R (x, y) -> x <= c && c <= y;;
 
 let rec test_range pattlist c = match pattlist with
     [] -> false
-  | x :: xs -> if test_char_patt x c then true else test_char ppattlist xs;;
+  | x :: xs -> if test_char_patt x c then true else test_range xs c;;
 
 let range pattlist stream =
   match Stream.peek stream with
@@ -41,12 +41,10 @@ let range pattlist stream =
     | Some c -> (if test_range pattlist c then (Stream.junk stream; c)
                  else raise Stream.Failure);;
 
-let n_range pattlist stream =
+let range_n pattlist stream =
   match Stream.peek stream with
       None -> raise Stream.Failure
     | Some c -> (
         if not (test_range pattlist c) then (Stream.junk stream; c)
         else raise Stream.Failure);;
 
-
-  

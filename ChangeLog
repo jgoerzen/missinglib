@@ -2,6 +2,22 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-09-01 01:30:07 GMT	John Goerzen <jgoerzen@complete.org>	patch-70
+
+    Summary:
+      Added parse utils
+    Revision:
+      missinglib--head--0.0--patch-70
+
+
+    new files:
+     libsrc/bnf/bNFparseutil.mli
+
+    modified files:
+     ChangeLog libsrc/Makefile libsrc/bnf/bNFparseutil.ml
+     libsrc/streamutil/streamutil.mli
+
+
 2004-09-01 00:26:30 GMT	John Goerzen <jgoerzen@complete.org>	patch-69
 
     Summary:
