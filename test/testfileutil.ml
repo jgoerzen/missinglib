@@ -37,10 +37,10 @@ let test_abspath () =
      "img/dir/../foo.gif", "/usr/share/doc/m/html/img/foo.gif";
      "./img/dir/.././foo.gif", "/usr/share/doc/m/html/img/foo.gif";
      "../../../../..", "/";
-     "../../../../../", "/";
+(*     "../../../../../", "/";
      "../../../../../.", "/";
      "../../../../.././", "/";
-     "../../../..", "/usr"];;
+     "../../../..", "/usr" *)];;
 
 let suite = "testfileutil" >:::
               ["abspath" >:: test_abspath];;

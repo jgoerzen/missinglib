@@ -22,7 +22,10 @@ let getlines filename =
 ;;
 
 let abspath ?startdir filename =
-  if not (Filename.is_relative filename) then
+(*  if not (Filename.is_relative filename) then
+    filename
+  else *)
+  if String.length filename < 1 then
     filename
   else
     let s = match startdir with
@@ -35,13 +38,15 @@ let abspath ?startdir filename =
         | "" :: xs -> proclist xs
         | "." :: xs -> proclist xs
         | x :: ".." :: xs -> proclist xs
-        | ".." :: xs -> raise (Failure "proclist: .. at bad place")
+(*        | ".." :: xs -> raise (Failure "proclist: .. at bad place") *)
         | x :: xs -> begin 
             if (List.mem ".." xs) then proclist (x :: proclist xs) else
               x :: proclist xs
           end
     in
-    let components = (Strutil.split "/" s) @ (Strutil.split "/" filename) in
+    let components = 
+      (if String.sub filename 0 1 = "/" then [] else (Strutil.split "/" s)) @
+      Strutil.split "/" filename in
     Strutil.join "/" ("" :: proclist components);;
 
   
