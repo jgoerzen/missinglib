@@ -2,6 +2,26 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-08-04 19:45:37 GMT	John Goerzen <jgoerzen@complete.org>	patch-54
+
+    Summary:
+      Renamed AnyDBM_Interface to AnyDBM
+    Revision:
+      missinglib--head--0.0--patch-54
+
+
+    modified files:
+     ChangeLog libsrc/Makefile libsrc/anyDBM/anyDBM.ml
+     libsrc/anyDBM/anyDBM.mli libsrc/anyDBM/anyDBM_String.ml
+     libsrc/anyDBM/anyDBM_String.mli
+
+    renamed files:
+     libsrc/anyDBM/anyDBM_Interface.ml
+       ==> libsrc/anyDBM/anyDBM.ml
+     libsrc/anyDBM/anyDBM_Interface.mli
+       ==> libsrc/anyDBM/anyDBM.mli
+
+
 2004-08-04 19:42:59 GMT	John Goerzen <jgoerzen@complete.org>	patch-53
 
     Summary:

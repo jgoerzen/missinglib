@@ -23,7 +23,7 @@ modules in OCaml.  Various AnyDBM implementations will use these definitions.
 
 You can use AnyDBM in your own code with code using something like this:
 
-{[open AnyDBM_Interface;;
+{[open AnyDBM;;
 let db = AnyDBM_String.dbm "/tmp/foo" 
          {read = true; write = true; create = true} 0o644;;
 add db "key" "value";;
@@ -31,7 +31,7 @@ close db;;]}
 
 You can use the Dbm compatibility features like this:
 
-{[open AnyDBM_Interface;;
+{[open AnyDBM;;
 let db = AnyDBM_Dbm.opendbm "/tmp/foo" [Dbm_rdwr; Dbm_create] 0o644;;
 add db "key" "value";;
 close db;;]}
@@ -42,7 +42,7 @@ Standard modules implementing the AnyDBM interface include:
 
 The interface in this module is designed to be a drop-in replacement for the
 system's Dbm module.  You can, in fact, replace [open Dbm] with
-[open AnyDBM_Interface], and adjust your [opendbm] calls, and have a
+[open AnyDBM], and adjust your [opendbm] calls, and have a
 transparent replacement.
 
 Certain modules -- most notably those that do not work with files on disk --
@@ -93,7 +93,7 @@ val close: t -> unit
 val find: t -> string -> string
 
 (** Adds the key/data pair given.  Raises
-  {!AnyDBM_Interface.Dbm_error}[ "Entry already exists"]
+  {!AnyDBM.Dbm_error}[ "Entry already exists"]
   if the key is already present. *)
 val add: t -> string -> string -> unit
 
@@ -103,7 +103,7 @@ val add: t -> string -> string -> unit
 val replace: t -> string -> string -> unit
 
 (** Remove the key/value pair with the given key.  If there is no such key,
-    raises {!AnyDBM_Interface.Dbm_error}[ "dbm_delete"]. *)
+    raises {!AnyDBM.Dbm_error}[ "dbm_delete"]. *)
 val remove: t -> string -> unit
 
 

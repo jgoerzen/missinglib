@@ -21,10 +21,10 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 This module is a wrapper around the persistent storage features in
 {!Hashtblutil}.  It is available on all systems.
 
-For usage examples, please see {!AnyDBM_Interface}.
+For usage examples, please see {!AnyDBM}.
 *)
 
-open AnyDBM_Interface;;
+open AnyDBM;;
 open Hashtbl;;
 
 class dbm: string -> anydbm_open_flag -> int -> 

@@ -26,7 +26,7 @@ exception Dbm_error of string;;
 (** Implementations of AnyDBM must provide an implementing object
 of type t.  The details of this class are not important for regular AnyDBM
 users.  Methods of this class correspond to the standard functions in
-{!AnyDBM_Interface}.  Please refer to those functions for documentation
+{!AnyDBM}.  Please refer to those functions for documentation
 on these methods. *)
 class type t =
 object

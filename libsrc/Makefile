@@ -37,8 +37,8 @@ SOURCES = compose/compose.mli compose/compose.ml \
 	  configParser/configParser_interp.ml \
 	  configParser/configParser.mli \
 	  configParser/configParser.ml \
-	  anyDBM/anyDBM_Interface.mli \
-	  anyDBM/anyDBM_Interface.ml \
+	  anyDBM/anyDBM.mli \
+	  anyDBM/anyDBM.ml \
 	  anyDBM/anyDBM_String.mli \
 	  anyDBM/anyDBM_String.ml
 
@@ -64,8 +64,8 @@ DOC_FILES := compose/compose.mli compose/compose.ml \
 	slice/slice.mli slice/slice.ml \
 	slice/sliceoper.mli slice/sliceoper.ml \
 	configParser/configParser.mli \
-	anyDBM/anyDBM_Interface.mli \
-	anyDBM/anyDBM_Interface.ml \
+	anyDBM/anyDBM.mli \
+	anyDBM/anyDBM.ml \
 	anyDBM/anyDBM_String.mli \
 	anyDBM/anyDBM_String.ml
 
