@@ -96,5 +96,5 @@ camlp4/%.cmo: camlp4/%.ml
 interact: all
 	ocaml $(INCLDIRS) unix.cma str.cma missinglib.cma
 
-all: bcl $(NATIVE_LIB_TARGET) $(CAMLP4CMO)
+all: $(CAMLP4CMO) bcl $(NATIVE_LIB_TARGET) $(CAMLP4CMO)
 

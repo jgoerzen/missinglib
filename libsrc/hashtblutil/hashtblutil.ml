@@ -28,7 +28,7 @@ let map f hash = Hashtbl.fold (fun key value l -> (f key value) :: l) hash [];;
 let keys hash = map (fun key value -> key) hash;;
 let values hash = map (fun key value -> value) hash;;
 let items hash = map (fun key value -> key, value) hash;;
-let length hash = keys %% List.length $ hash;;
+let length hash = (keys %% List.length) hash;;
 
 let convkeys hasht convfunc =
   let doconv key value = 
@@ -44,10 +44,10 @@ let convkeys_copy hasht convfunc =
   newhash;;
 
 let str_of_stritem key value = 
-  Printf.sprintf "%S:%S\n" key value;;
+  Printf.sprintf "%S,%S\n" key value;;
 
 let stritem_of_str instr =
-  Scanf.sscanf instr "%S:%S" (fun k v -> k,v);;
+  Scanf.sscanf instr "%S,%S" (fun k v -> k,v);;
   
 let strhash_to_ochan hasht ochan =
   Hashtbl.iter (fun k v -> output_string ochan (str_of_stritem k v)) hasht;;

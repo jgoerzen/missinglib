@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-12-13 14:44:27 GMT	John Goerzen <jgoerzen@complete.org>	patch-81
+
+    Summary:
+      Various fixes for OCaml 3.08.2
+    Revision:
+      missinglib--head--0.0--patch-81
+
+
+    modified files:
+     ChangeLog libsrc/Makefile libsrc/compose/composeoper.ml
+     libsrc/compose/composeoper.mli
+     libsrc/hashtblutil/hashtblutil.ml test/teststreamutil.ml
+
+
 2004-12-13 14:26:09 GMT	John Goerzen <jgoerzen@complete.org>	patch-80
 
     Summary:

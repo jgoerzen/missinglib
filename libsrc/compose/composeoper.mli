@@ -27,5 +27,7 @@ val (%): ('a -> 'b) -> ('c -> 'a) -> 'c -> 'b
 (** (g %% f) x is the same as f(g(x)). *)
 val (%%): ('a -> 'b) -> ('b -> 'c) -> 'a -> 'c
 
+(*
 (** This will apply a function. *)
 val ($): ('a -> 'b) -> 'a -> 'b
+*)
