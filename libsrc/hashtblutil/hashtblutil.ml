@@ -17,16 +17,18 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *)
 
 open Hashtbl;;
+open Hashtbloper;;
+open Composeoper;;
 
 let merge original newitems =
   let mergef = replace original in
   iter mergef newitems;;
 
 let map f hash = Hashtbl.fold (fun key value l -> (f key value) :: l) hash [];;
-let keys hash = map (fun key value -> key) hash;;
-let values hash = map (fun key value -> value) hash;;
-let items hash = map (fun key value -> key, value)  hash;;
-let length hash = List.length (keys hash);;
+let keys = map (fun key value -> key);;
+let values = map (fun key value -> value);;
+let items = map (fun key value -> key, value);;
+let length = keys %% List.length;;
 
 let convkeys hasht convfunc =
   let doconv key value = 
@@ -40,4 +42,3 @@ let convkeys_copy hasht convfunc =
   let newhash = copy hasht in
   convkeys newhash convfunc;
   newhash;;
-

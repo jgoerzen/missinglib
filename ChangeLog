@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-06-15 22:02:51 GMT	John Goerzen <jgoerzen@complete.org>	patch-30
+
+    Summary:
+      Working on compose-based funcs
+    Revision:
+      missinglib--head--0.0--patch-30
+
+
+    modified files:
+     ChangeLog libsrc/compose/composeoper.ml
+     libsrc/compose/composeoper.mli
+     libsrc/hashtblutil/hashtblutil.ml libsrc/strutil/strutil.ml
+
+
 2004-06-15 21:52:50 GMT	John Goerzen <jgoerzen@complete.org>	patch-29
 
     Summary:
