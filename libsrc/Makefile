@@ -44,7 +44,7 @@ SOURCES = compose/compose.mli compose/compose.ml \
 	  anyDBM/anyDBM.ml \
 	  anyDBM/anyDBM_String.mli \
 	  anyDBM/anyDBM_String.ml \
-	  bnf/bNFparseutil.mli \
+	  bnf/bNFparseutil.ml \
 	  bnf/bNFparseutil.mli \
 	  bnf/aBNF_core.ml
 

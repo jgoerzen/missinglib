@@ -1,4 +1,4 @@
-(*pp camlp4o -I . -I ./camlp4 -I ../camlp4 pa_bparser.cmo *)
+(*pp camlp4 -I . -I ./camlp4 -I ../camlp4 pa_o.cmo pa_bparser.cmo pr_dump.cmo *)
 (* arch-tag: ABNF core rules
 Copyright (C) 2004 John Goerzen <jgoerzen@complete.org>
 
@@ -22,7 +22,8 @@ open BNFparseutil;;
 
 let alpha = bparser
     [< x = (range [R(chr(0x41), chr(0x5a)); R(chr(0x61), chr(0x7a))]) >]
-              -> x
+              -> x;;
+(*
 
 and bit = bparser
     [< x = range [C '0'; C '1'] >] -> x
@@ -39,3 +40,4 @@ and crlf = bparser
 and ctl = bparser
     [< x = range [R(chr(0x00), chr(0x1f)); C(chr(0x7f))] >] -> x
 ;;
+*)
