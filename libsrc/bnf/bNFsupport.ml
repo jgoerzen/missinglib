@@ -61,7 +61,7 @@ object (self)
     let n_to_consume = count cstream - lastconsume in
     let rec consumeit n = match n with
         0 -> ()
-      | x -> junk parentstream; cache <- tl cache; consumeit (x -1) in
+      | x -> junk parentstream; (* cache <- tl cache; *) consumeit (x -1) in
     consumeit n_to_consume;
     lastconsume <- count cstream;
 

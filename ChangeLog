@@ -2,6 +2,26 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-08-31 20:28:46 GMT	John Goerzen <jgoerzen@complete.org>	patch-65
+
+    Summary:
+      Added the beta support for backtracking parsers
+    Revision:
+      missinglib--head--0.0--patch-65
+
+
+    new files:
+     unmerged/.arch-ids/=id unmerged/.arch-ids/pa_op.ml.id
+     unmerged/.arch-ids/pa_op.orig.ml.id unmerged/pa_op.ml
+     unmerged/pa_op.orig.ml
+
+    modified files:
+     ChangeLog libsrc/bnf/bNFsupport.ml
+
+    new directories:
+     unmerged unmerged/.arch-ids
+
+
 2004-08-31 18:18:50 GMT	John Goerzen <jgoerzen@complete.org>	patch-64
 
     Summary:
