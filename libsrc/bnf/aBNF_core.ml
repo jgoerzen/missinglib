@@ -17,13 +17,13 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *)
 
+open Strutil;;
 open Streamutil;;
 open BNFparseutil;;
 
 let alpha = bparser
     [< x = (range [R(chr(0x41), chr(0x5a)); R(chr(0x61), chr(0x7a))]) >]
-              -> x;;
-(*
+              -> x
 
 and bit = bparser
     [< x = range [C '0'; C '1'] >] -> x
@@ -32,12 +32,16 @@ and char = bparser
     [< x = range [R(chr(0x01), chr(0x7f))] >] -> x
 
 and cr = bparser
-    [< ''\x0d' >] -> '\x0d'
+    [< ''\x0d' >] -> '\x0d';;
 
-and crlf = bparser
-    [< cr; lf >] -> ()
+let lf = range [C('\x0a')];;
+
+let crlf = bparser
+    [< x = cr; y = lf >] -> string_of_charlist([x; y]) 
 
 and ctl = bparser
     [< x = range [R(chr(0x00), chr(0x1f)); C(chr(0x7f))] >] -> x
+
+and digit = range ~i:false [R(chr(0x30), chr(0x39))]
+
 ;;
-*)

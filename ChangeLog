@@ -2,6 +2,18 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-09-01 15:50:48 GMT	John Goerzen <jgoerzen@complete.org>	patch-74
+
+    Summary:
+      Checkpointing BNF work
+    Revision:
+      missinglib--head--0.0--patch-74
+
+
+    modified files:
+     ChangeLog libsrc/bnf/aBNF_core.ml
+
+
 2004-09-01 15:43:06 GMT	John Goerzen <jgoerzen@complete.org>	patch-73
 
     Summary:
