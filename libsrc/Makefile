@@ -46,6 +46,7 @@ SOURCES = compose/compose.mli compose/compose.ml \
 	  anyDBM/anyDBM_String.ml \
 	  bnf/bNFparseutil.ml \
 	  bnf/bNFparseutil.mli \
+	  bnf/aBNF_core.mli \
 	  bnf/aBNF_core.ml
 
 
@@ -77,6 +78,7 @@ DOC_FILES := compose/compose.mli compose/compose.ml \
 	anyDBM/anyDBM_String.ml \
 	bnf/bNFparseutil.mli \
 	bnf/bNFparseutil.ml \
+	bnf/aBNF_core.mli \
 	camlp4doc/pa_bparser.mli 
 
 MLIFILES := $(filter %.mli,$(SOURCES))

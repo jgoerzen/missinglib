@@ -2,6 +2,21 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-09-01 16:14:27 GMT	John Goerzen <jgoerzen@complete.org>	patch-77
+
+    Summary:
+      Completed core definitions
+    Revision:
+      missinglib--head--0.0--patch-77
+
+
+    new files:
+     libsrc/bnf/aBNF_core.mli
+
+    modified files:
+     ChangeLog libsrc/Makefile
+
+
 2004-09-01 16:04:39 GMT	John Goerzen <jgoerzen@complete.org>	patch-76
 
     Summary:
