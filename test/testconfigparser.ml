@@ -77,13 +77,13 @@ let test_simpleparse = [
    "error input" >:: (fun () ->
      assert_raises (ParsingSyntaxError 
        "ConfigParser: Syntax error in <unknown>, at or before offset 6 (line 2, char 1)")
-       (fun () -> let cp = makecp "#foo\nthis is bad data" in cp; ())
+       (fun () -> let cp = makecp "#foo\nthis is bad data" in ignore cp)
    );
    "parser error" >:: (fun () ->
      assert_raises (ParsingSyntaxError
        "ConfigParser: Syntax error in <unknown>, at or before offset 18 (line 3, char 1)")
        (fun () -> let cp = makecp "[sect1]\n#iiiiii \n  extensionline\n#foo" in
-       cp; ())
+       ignore cp)
    );
    "sectionless option" >:: (fun () ->
      let cp = makecp "v1: o1\n[sect1]\nv2: o2" in 

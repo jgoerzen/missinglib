@@ -2,6 +2,19 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-06-05 15:54:31 GMT	John Goerzen <jgoerzen@complete.org>	patch-21
+
+    Summary:
+      Fixed compilation warnings and tests work.
+    Revision:
+      missinglib--head--0.0--patch-21
+
+
+    modified files:
+     ChangeLog Makefile.setup libsrc/configParser/configParser.ml
+     test/testconfigparser.ml
+
+
 2004-06-05 15:38:27 GMT	John Goerzen <jgoerzen@complete.org>	patch-20
 
     Summary:

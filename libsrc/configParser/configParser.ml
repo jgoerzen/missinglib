@@ -110,8 +110,11 @@ exception Interpolation_error of string;;
 class configParser =
 object(self)
   inherit rawConfigParser as super
-  val getdata = fun ?(raw=false) ?(idepth=10) ?extravars obj sname oname ->
-    obj#maininterpgetdata raw idepth extravars sname oname
+    (*
+  val interp_getdata = 
+    fun ?(raw=false) ?(idepth=10) ?extravars obj sname oname ->
+      obj#maininterpgetdata raw idepth extravars sname oname
+    *)
   method private maininterpgetdata raw idepth extravars sname oname =
     if raw then self#maingetdata sname oname else
       self#getdata_interp idepth false extravars sname oname
@@ -119,11 +122,12 @@ object(self)
     let rec realfunc idepth usevars extravars sname oname = 
       if idepth < 0 then raise (Interpolation_error "Interpolation depth exceeded");
       let data =
-        if usevars && extravars != None then (
-          try 
-            find (match extravars with Some x -> x) oname 
-          with Not_found -> self#maingetdata sname oname
-        ) else self#maingetdata sname oname in
+        let default = self#maingetdata sname oname in
+        match extravars with
+          Some x -> if usevars then
+            (try find x oname with Not_found -> self#maingetdata sname oname)
+          else default
+          | None -> self#maingetdata sname oname in
       interpolate_string data (realfunc (idepth - 1) true extravars sname)
     in realfunc idepth usevars extravars sname oname
 
