@@ -1,0 +1,6 @@
+missinglib (0.0.1-1) unstable; urgency=low
+
+  * Initial Release.  Closes: #245510.
+
+ -- John Goerzen <jgoerzen@complete.org>  Fri, 23 Apr 2004 11:01:24 -0500
+

@@ -1,0 +1,109 @@
+-------------------------
+What is Missinglib?
+-------------------------
+
+It's a collection of OCaml-related utilities.  The following modules are
+are provided:
+
+ConfigParser            System for parsing configuration files
+Hashtbloper             Hash table convenience operators
+Hashtblutil             Hash table utilities
+Lexingutil              Lexing-related utilities
+Listutil                List-manipulation utilities
+Slice                   Underlying API for Slice operators
+Sliceoper               Flexible subparts of arrays, lists, and strings
+Streamutil              Stream parser utilities
+Strutil                 String-related utilities
+
+The entire library has no prerequisites save the OCaml standard library and
+findlib and is designed to install without complexity on a variety of
+systems.  It could also easily be embedded within your own source trees
+so that users need not have it installed beforehand.
+
+-------------------------
+Quick Start
+-------------------------
+
+1. Make sure you have OCaml 3.07 or above and findlib 0.3.1 or above
+   installed.  You can obtain findlib from 
+   http://www.ocaml-programming.de/packages/
+
+2. Run "make"
+
+3. Optional: "make test"
+
+4. As root: "make install"
+
+-------------------------
+Usage in programs
+-------------------------
+
+You can compile your .ml files to .cmo with this:
+
+  ocamlfind ocamlc -package missinglib -c test.ml
+
+  or:
+
+  ocamlfind ocamlopt -package missinglib -c test.ml
+
+Then, you can link them with:
+
+   ocamlfind ocamlc -package missinglib -linkpkg -o test test.cmo
+
+   or:
+
+   ocamlfind ocamlopt -package missinglib -linkpkg -o test test.cmx
+
+If you prefer to compile and link all at once, use:
+
+   ocamlfind ocamlc -package missinglib -linkpkg -o test test.ml
+
+   or
+
+   ocamlfind ocamlopt -package missinglib -linkpkg -o test test.ml
+
+In the OCaml top-level interpreter "ocaml", you can use:
+
+   #use "topfind";;
+   #require "missinglib";;
+
+   Then continue like normal.
+
+-------------------------
+Documentation
+-------------------------
+
+You can generate it in HTML with:
+
+  cd libsrc; make htdoc
+
+You could instead build the PDF version with:
+
+  cd libsrc; make pdfdoc
+
+Also available online at the package's homepage (see below)
+
+-------------------------
+Author & Homepage
+-------------------------
+
+Missinglib was written by John Goerzen <jgoerzen@complete.org>.
+
+The latest version may be obtained at:
+
+   gopher://quux.org/1/devel/missinglib
+
+or:
+
+   http://quux.org/devel/missinglib
+
+Documentation is also available on that page.
+
+This program is copyrighted under the terms of the GNU General Public License.
+See the COPYRIGHT and COPYING files for more details.
+
+If the GPL is unacceptable for your uses, please e-mail me; alternative
+terms can be negotiated for your project.
+
+arch-tag: general information
+
