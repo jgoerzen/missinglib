@@ -120,20 +120,27 @@ let test_defaults () =
   assert_equal ~msg:"default float" 17.34 (cp#getfloat ~default:17.34 "foo" "bar");
   assert_equal ~msg:"default bool" true (cp#getbool ~default:true "foo" "bar");;
 
-let test_interpolate = [
-  "example" >:: (fun () -> let cp = makecp "[DEFAULT]
+let interpdoc = "[DEFAULT]
 arch = i386
 
 [builder]
 filename = test_%(arch)s.c
-dir = /usr/src/%(filename)
-percent = 5%%" in
+dir = /usr/src/%(filename)s
+percent = 5\\%";;
+
+(*
+let test_interp_basic () =
+  let cp = makeicp 
+*)
+
+let test_interpolate = [
+  "example" >:: (fun () -> let cp = makeicp interpdoc  in
                  string_equal "basic" (cp#get "DEFAULT" "arch") "i386";
                  string_equal "filename" "test_i386.c" 
                    (cp#get "builder" "filename");
                  string_equal "dir" "/usr/src/test_i386.c"
                    (cp#get "builder" "dir");
-                 string_equal "percents" (cp#get "builder" "percent") "5%";
+                 string_equal "percents" "5%" (cp#get "builder" "percent");
                 );
 ];;
 

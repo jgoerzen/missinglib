@@ -2,6 +2,19 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-06-05 16:37:53 GMT	John Goerzen <jgoerzen@complete.org>	patch-25
+
+    Summary:
+      Interpolation now works
+    Revision:
+      missinglib--head--0.0--patch-25
+
+
+    modified files:
+     ChangeLog libsrc/configParser/configParser.mli
+     test/testconfigparser.ml
+
+
 2004-06-05 16:32:56 GMT	John Goerzen <jgoerzen@complete.org>	patch-24
 
     Summary:

@@ -259,11 +259,13 @@ interpolation.  As an example, consider the following file: {[
  arch = i386
  project = test
  filename = test_%(arch)s.c
- dir = /usr/src/%(filename)s ]}
+ dir = /usr/src/%(filename)s 
+ percent = 5\% ]}
 
 You could then expect the following results: {[
 get "DEFAULT" "filename" -> "test_i386.c"
-get "DEFAULT" "dir" -> "/usr/src/test_i386.c" ]}
+get "DEFAULT" "dir" -> "/usr/src/test_i386.c"
+get "DEFAULT" "percent" -> "5%" ]}
 
 *)
 
