@@ -10,8 +10,9 @@ class type ['a, 'b] indexed_t =
     method get: 'a
     method iter: ('b -> unit) -> unit
     (*
-    method map: 'd.  ('b -> 'd) -> 'd indexed_t
-    method fold_left: 'd.  ('d -> 'b -> 'd) -> 'd -> 'd  *)
+    method map: 'd.  ('b -> 'd) -> (_, _) indexed_t
+    *)
+    method fold_left: 'd.  ('d -> 'b -> 'd) -> 'd -> 'd 
     method sort: ('b -> 'b -> int) -> ('a, 'b) indexed_t
     method set: 'a -> unit
   end
@@ -33,7 +34,7 @@ class virtual ['a, 'b] indexed (init:'a) =
   end
 ;;
 class ['z] indexedarray (init:'z array) =
-  object (self: 'c)
+  object (self:indexed_t)
     inherit ['z array, 'z] indexed init
     method sub x y = (self#copyhelper (Array.sub contents x y) :> ('z array, 'z)
     indexed_t)
@@ -44,9 +45,10 @@ class ['z] indexedarray (init:'z array) =
     method extend  = fun newitems -> ((self#copyhelper (Array.append contents
     newitems)) :> ('z array, 'z) indexed_t)
     method iter f = Array.iter f contents
-    method map f = new indexedarray (Array.map f contents) 
-    (*
-    method fold_left f x = self#copyhelper(Array.fold_left f x contents) *)
+    method map f = (new indexedarray (Array.map f contents) :> ('z array, 'z)
+      indexed_t)
+    method fold_left f x = (self#copyhelper(Array.fold_left f x contents) 
+     :> ('z array, 'z) indexed_t)
     method sort f = (self#copyhelper (
       let newobj = Array.copy contents in Array.sort f newobj; newobj)
       :> ('z array, 'z) indexed_t)
