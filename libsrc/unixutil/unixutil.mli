@@ -15,6 +15,9 @@ These functions help process files
 (** Returns true if the specified file exists; false otherwise. *)
 val exists: string -> bool
 
+(** Returns true if the specified file exists and is a directory. *)
+val isdir: string -> bool
+
 (** {6 Directory processing}
 These functions help process directories.
 *)
@@ -50,6 +53,17 @@ val recurse_list: string -> (string * Unix.stats) list
   in subdirectires, the full relative path starting from name will be
   passed. *)
 val recurse_cmd: (string * Unix.stats -> unit) -> string -> unit
+
+(** Returns the absolute path of name.
+
+This does not necessarily resolve symlinks.
+
+Side-effects: the current working directory is briefly changed, but is changed
+back.  If [os.getcwd ()] returns an invalid cwd to start with, results
+are undefined and may cause an exception (since it then cannot change back).
+This circumstance is rare and probably not of concern to you.
+*)
+val abspath: string -> string
 
 (** {6 Shell replacements}
 These functions replace standard shell functions with the same name.

@@ -2,6 +2,19 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-08-06 21:51:28 GMT	John Goerzen <jgoerzen@complete.org>	patch-58
+
+    Summary:
+      Added new abspath and isdir functions to Unixutil
+    Revision:
+      missinglib--head--0.0--patch-58
+
+
+    modified files:
+     ChangeLog debian/changelog libsrc/unixutil/unixutil.ml
+     libsrc/unixutil/unixutil.mli
+
+
 2004-08-04 19:58:06 GMT	John Goerzen <jgoerzen@complete.org>	patch-57
 
     Summary:

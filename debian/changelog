@@ -1,3 +1,9 @@
+missinglib (0.4.7) unstable; urgency=low
+
+  * Added new abspath and isdir functions to Unixutil.
+
+ -- John Goerzen <jgoerzen@complete.org>  Fri,  6 Aug 2004 16:50:09 -0500
+
 missinglib (0.4.6) unstable; urgency=low
 
   * Added AnyDBM and AnyDBM_String to support persistent storage.

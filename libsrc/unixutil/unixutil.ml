@@ -72,3 +72,27 @@ let rm ?(recursive=false) ?(force=false) filename =
       recunl (filename, Unix.lstat filename)
   with (Unix.Unix_error _) as exc ->
     if not force then raise exc;;
+
+let isdir name =
+  try (stat name).st_kind = S_DIR with error -> false;;
+
+let abspath name =
+  if not (Filename.is_relative name) then
+    name
+  else begin
+    let startdir = os.getcwd() in
+    if isdir name then begin
+      os.chdir name;
+      let retval = os.getcwd () in
+      os.chdir startdir;
+      retval;
+    end else begin
+      let base = Filename.basename name in
+      let dirn = Filename.dirname name in
+      os.chdir dirn;
+      let reval = Filename.concat (os.getcwd()) base in
+      os.chdir startdir;
+      retval;
+    end;
+  end;;
+
