@@ -5,6 +5,11 @@ What is Missinglib?
 It's a collection of OCaml-related utilities.  The following modules are
 are provided:
 
+AnyDBM                  Generic interface for on-disk storage of
+                        key/value data
+
+AnyDBM_String           AnyDBM module for simple CSV-style storage
+
 Compose                 Utilities for chaining functions together
 
 Composeoper             Haskell-like operators for chaining functions

@@ -11,6 +11,8 @@ Depends: ${shlibs:Depends}, ${misc:Depends}, ocaml-nox (>= 3.08), ocaml-findlib 
 Description: Library of utility functions for OCaml
  The following modules are are provided:
  .
+  AnyDBM                  Generic system for key/value persistent storage
+  AnyDBM_String           CSV-like pure OCaml storage module for AnyDBM
   Compose                 Utilies for combining functions
   Composeoper             Operators for combining functions
   ConfigParser            System for parsing configuration files
