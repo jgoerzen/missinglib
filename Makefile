@@ -20,5 +20,7 @@ test: defaulttgt
 distclean: clean
 	-rm `find . -name "*~"`
 	-rm -r libsrc/doc libsrc/ocamldoc.* libsrc/configParser/*.output
+	-find . -name "*.cmo" -exec rm {} \;
+	-find . -name "*.cmi" -exec rm {} \;
 %:
 	for DIR in $(SUBDIRS); do make -C $$DIR $@ || exit 1; done

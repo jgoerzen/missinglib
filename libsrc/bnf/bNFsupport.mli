@@ -16,14 +16,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *)
 
-(** {6 Simple Storage of Hashtable-like objects on disk}
-
-This module is a wrapper around the persistent storage features in
-{!Hashtblutil}.  It is available on all systems.
-
-For usage examples, please see {!AnyDBM}.
-*)
-
 (** BNF Parser support utilities
 
 @author Copyright (C) 2004 John Goerzen <jgoerzen\@complete.org>
