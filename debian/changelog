@@ -1,3 +1,9 @@
+missinglib (0.4.3) unstable; urgency=low
+
+  * [Debian] Rebuilt for OCaml 3.08
+
+ -- John Goerzen <jgoerzen@complete.org>  Tue, 27 Jul 2004 08:49:30 -0500
+
 missinglib (0.4.2) unstable; urgency=low
 
   * New feature in Streamutil: fold_left

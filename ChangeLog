@@ -2,6 +2,18 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-07-27 13:50:08 GMT	John Goerzen <jgoerzen@complete.org>	patch-41
+
+    Summary:
+      Updated for OCaml 3.08
+    Revision:
+      missinglib--head--0.0--patch-41
+
+
+    modified files:
+     ChangeLog debian/changelog debian/control
+
+
 2004-07-21 21:21:24 GMT	John Goerzen <jgoerzen@complete.org>	patch-40
 
     Summary:
