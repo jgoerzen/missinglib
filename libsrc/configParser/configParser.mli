@@ -162,6 +162,8 @@ Usage example: {[
 class rawConfigParser :
   object
 
+    method maingetdata: string -> string -> string
+
     (** Returns a list of the sections in your configuration file.  Never
     * includes the always-present section [DEFAULT]. *) 
     method sections: string list

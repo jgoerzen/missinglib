@@ -21,6 +21,7 @@ module Cptypes = ConfigParser_types;;
 open Cptypes;;
 open Hashtbl;;
 open Hashtblutil;;
+open Hashtbloper;;
 open ConfigParser_interp;;
 
 exception DuplicateSectionError;;
@@ -40,6 +41,11 @@ class rawConfigParser =
   object(self)
     initializer self#add_section "DEFAULT"
     val configfile = make_file ()
+    val getdata = fun obj sname oname -> obj#maingetdata sname oname
+    method maingetdata sname oname =
+      try
+        find (self#section_h sname) (self#optionxform oname)
+      with Not_found -> find (self#section_h "DEFAULT") (self#optionxform oname)
     method sections = List.filter (fun x -> x <> "DEFAULT") (keys configfile)
     method add_section sname = 
       if self#has_section sname then
@@ -61,16 +67,12 @@ class rawConfigParser =
     method readstring istring =
       let ast = ConfigParser_runparser.parse_string istring in
       convert_list_file configfile self#optionxform ast 
-    method private getdata sname oname = 
-      try
-        find (self#section_h sname) (self#optionxform oname)
-      with Not_found -> find (self#section_h "DEFAULT") (self#optionxform oname)
     method get ?default =
-      def default (fun x -> x) self#getdata
+      def default (fun x -> x) (getdata self)
     method getint ?default =
-      def default int_of_string self#getdata
+      def default int_of_string (getdata self)
     method getfloat ?default = 
-      def default float_of_string self#getdata
+      def default float_of_string (getdata self)
     method private getbool_isyes value =
       List.mem (String.lowercase value) ["1"; "yes"; "true"; "on"; "enabled"]
     method private getbool_isno value =
@@ -81,7 +83,7 @@ class rawConfigParser =
           raise (InvalidBool v)
 
     method getbool ?default = 
-      def default self#bool_of_string self#getdata 
+      def default self#bool_of_string (getdata  self)
     method items sname = items (self#section_h sname)
     method set sname oname value =
       let s = self#section_h sname in
@@ -102,3 +104,29 @@ class rawConfigParser =
       else false
     method optionxform oname = String.lowercase oname
   end;;
+
+exception Interpolation_error of string;;
+
+class configParser =
+  object(self)
+    inherit rawConfigParser as super
+    val getdata = fun ?(raw=false) ?(idepth=10) ?extravars obj sname oname ->
+      obj#maininterpgetdata raw idepth extravars sname oname
+    method private maininterpgetdata raw idepth extravars sname oname =
+      if raw then self#maingetdata sname oname else
+        self#getdata_interp idepth false extravars sname oname
+    method private getdata_interp idepth usevars extravars sname oname =
+      let rec realfunc idepth usevars extravars sname oname = 
+        if idepth < 0 then raise (Interpolation_error "Interpolation depth exceeded");
+        let data =
+          if usevars && extravars != None then (
+            try 
+              find (match extravars with Some x -> x) oname 
+            with Not_found -> self#maingetdata sname oname
+          ) else self#maingetdata sname oname in
+        interpolate_string data (realfunc (idepth - 1) true extravars sname)
+      in realfunc idepth usevars extravars sname oname
+
+  end;;
+
+    
