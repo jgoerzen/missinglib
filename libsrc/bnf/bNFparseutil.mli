@@ -22,6 +22,24 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 @author Copyright (C) 2004 John Goerzen <jgoerzen\@complete.org>
 *)
 
+(** {6 General Parsing Utilities} *)
+
+(** Used to ensure that all conditions are met at the same point on a stream.
+Takes a list of stream parsers that all return the same type of data and
+evaluates them all.  If all succeed (don't raise any exceptions), then a list
+of results from those parsers is returned.
+
+Note: It is extremely important that you make all your conditions consume the
+same amount of data from the stream.  Otherwise, undefined results will occur.
+*)
+val s_and: ('a Stream.t -> 'b) list -> 'a Stream.t -> 'b list
+
+(** Useful to testing to see if the end-of-file has been reached.  This is an
+alias for [Stream.empty]. *)
+val eof: 'a Stream.t -> unit
+
+(** {6 Character-Specific Parsing Utilities} *)
+
 (** Used for parsing character ranges *)
 type repatt =
     C of char                           (** Match a single character *)

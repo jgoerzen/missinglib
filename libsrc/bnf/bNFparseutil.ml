@@ -47,4 +47,31 @@ let range_n pattlist stream =
     | Some c -> (
         if not (test_range pattlist c) then (Stream.junk stream; c)
         else raise Stream.Failure);;
+(*
+let s_or test1 test2 istream =
+  try begin
+    let cstream = new BNFSupport.lazyStream istream in
+    let retval = test1 cstream in
+    cstream#consume_stream;
+    retval
+  end with Stream.Failure | Stream.Error _ -> begin
+    let cstream = new BNFSupport.lazyStream istream in
+    let retval = test2 cstream in
+    cstream#consume_stream;
+    retval;
+  end;
+;;
+*)
 
+let s_and predlist istream =
+  if predlist = [] then raise (Stream.Error "Predicate list empty in s_and")
+  else begin
+    let procitem item =
+      let cs = new BNFSupport.lazyStream istream in
+      (cs, item cs) in
+    let processed = List.map procitem prodlist in
+    (fst (hd processed))#consume_stream;
+    List.map snd processed;
+  end;;
+
+let eof = String.empty;;
