@@ -34,7 +34,8 @@ class virtual ['a, 'b] indexed (init:'a) =
   end
 ;;
 class ['z] indexedarray (init:'z array) =
-  object (self:indexed_t)
+  object (self:'c)
+    constraint 'c = ('z array, 'z) #indexed_t
     inherit ['z array, 'z] indexed init
     method sub x y = (self#copyhelper (Array.sub contents x y) :> ('z array, 'z)
     indexed_t)
@@ -47,8 +48,7 @@ class ['z] indexedarray (init:'z array) =
     method iter f = Array.iter f contents
     method map f = (new indexedarray (Array.map f contents) :> ('z array, 'z)
       indexed_t)
-    method fold_left f x = (self#copyhelper(Array.fold_left f x contents) 
-     :> ('z array, 'z) indexed_t)
+    method fold_left f x = Array.fold_left f x contents 
     method sort f = (self#copyhelper (
       let newobj = Array.copy contents in Array.sort f newobj; newobj)
       :> ('z array, 'z) indexed_t)
