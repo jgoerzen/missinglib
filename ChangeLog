@@ -2,6 +2,25 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-06-05 17:06:49 GMT	John Goerzen <jgoerzen@complete.org>	patch-28
+
+    Summary:
+      This is 0.4.0
+    Revision:
+      missinglib--head--0.0--patch-28
+
+
+    new files:
+     libsrc/fileutil/.arch-ids/=id libsrc/fileutil/fileutil.ml
+     libsrc/fileutil/fileutil.mli
+
+    modified files:
+     ChangeLog debian/changelog libsrc/Makefile
+
+    new directories:
+     libsrc/fileutil libsrc/fileutil/.arch-ids
+
+
 2004-06-05 16:52:07 GMT	John Goerzen <jgoerzen@complete.org>	patch-27
 
     Summary:

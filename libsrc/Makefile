@@ -25,6 +25,7 @@ SOURCES = strutil/strutil.mli strutil/strutil.ml \
 	  slice/sliceoper.mli slice/sliceoper.ml \
 	  indexed/indexed.ml \
 	  streamutil/streamutil.mli streamutil/streamutil.ml \
+	  fileutil/fileutil.mli fileutil/fileutil.ml \
 	  configParser/configParser_types.ml \
 	  configParser/configParser_parser.mly \
 	  configParser/configParser_lexer.mll  \
@@ -44,6 +45,7 @@ DOC_FILES := strutil/strutil.mli strutil/strutil.ml \
 	listutil/listutil.mli listutil/listutil.ml \
 	lexingutil/lexingutil.mli lexingutil/lexingutil.ml \
 	streamutil/streamutil.mli streamutil/streamutil.ml \
+	fileutil/fileutil.mli fileutil/fileutil.ml \
 	slice/slice.mli slice/slice.ml \
 	slice/sliceoper.mli slice/sliceoper.ml \
 	configParser/configParser.mli
@@ -58,4 +60,3 @@ ifeq ($(HAS_NATIVE),YES)
 endif
 
 all: bcl $(NATIVE_LIB_TARGET)
-	
