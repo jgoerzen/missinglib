@@ -1,0 +1,12 @@
+Document: missinglib
+Title: Debian missinglib Manual
+Author: John Goerzen
+Abstract: Documentation for the OCaml library
+ MissingLib.
+Section: devel
+
+Format: HTML
+Index: /usr/share/doc/missinglib/html/index.html
+Files: /usr/share/doc/missinglib/html/*.html
+
+  

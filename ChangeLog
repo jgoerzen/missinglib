@@ -2,6 +2,34 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-06-17 15:58:20 GMT	John Goerzen <jgoerzen@complete.org>	patch-32
+
+    Summary:
+      Several updates
+    Revision:
+      missinglib--head--0.0--patch-32
+
+    Added doc-base support
+    
+    Added skeleton Unixutil support
+
+    new files:
+     libsrc/unixutil/.arch-ids/=id libsrc/unixutil/unixutil.ml
+     libsrc/unixutil/unixutil.mli
+
+    modified files:
+     ChangeLog debian/missinglib.doc-base libsrc/Makefile
+
+    renamed files:
+     debian/.arch-ids/missinglib.doc-base.EX.id
+       ==> debian/.arch-ids/missinglib.doc-base.id
+     debian/missinglib.doc-base.EX
+       ==> debian/missinglib.doc-base
+
+    new directories:
+     libsrc/unixutil libsrc/unixutil/.arch-ids
+
+
 2004-06-16 01:47:12 GMT	John Goerzen <jgoerzen@complete.org>	patch-31
 
     Summary:

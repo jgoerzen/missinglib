@@ -28,6 +28,7 @@ SOURCES = compose/compose.mli compose/compose.ml \
 	  indexed/indexed.ml \
 	  streamutil/streamutil.mli streamutil/streamutil.ml \
 	  fileutil/fileutil.mli fileutil/fileutil.ml \
+	  unixutil/unixutil.mli unixutil/unixutil.ml \
 	  configParser/configParser_types.ml \
 	  configParser/configParser_parser.mly \
 	  configParser/configParser_lexer.mll  \
@@ -50,6 +51,7 @@ DOC_FILES := compose/compose.mli compose/compose.ml \
 	lexingutil/lexingutil.mli lexingutil/lexingutil.ml \
 	streamutil/streamutil.mli streamutil/streamutil.ml \
 	fileutil/fileutil.mli fileutil/fileutil.ml \
+	unixutil/unixutil.mli unixutil/unixutil.ml \
 	slice/slice.mli slice/slice.ml \
 	slice/sliceoper.mli slice/sliceoper.ml \
 	configParser/configParser.mli
