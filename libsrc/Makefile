@@ -23,6 +23,7 @@ SOURCES = strutil/strutil.mli strutil/strutil.ml \
 	  hashtblutil/hashtbloper.mli hashtblutil/hashtbloper.ml \
 	  slice/slice.mli slice/slice.ml \
 	  slice/sliceoper.mli slice/sliceoper.ml \
+	  indexed/indexed.ml \
 	  streamutil/streamutil.mli streamutil/streamutil.ml \
 	  configParser/configParser_types.ml \
 	  configParser/configParser_parser.mly \

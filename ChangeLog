@@ -2,6 +2,26 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-04-29 16:40:13 GMT	John Goerzen <jgoerzen@complete.org>	patch-13
+
+    Summary:
+      Initial work on indexed complete
+    Revision:
+      missinglib--head--0.0--patch-13
+
+
+    new files:
+     libsrc/file/.arch-ids/=id libsrc/indexed/.arch-ids/=id
+     libsrc/indexed/indexed.ml
+
+    modified files:
+     ChangeLog libsrc/Makefile
+
+    new directories:
+     libsrc/file libsrc/file/.arch-ids libsrc/indexed
+     libsrc/indexed/.arch-ids
+
+
 2004-04-28 21:33:18 GMT	John Goerzen <jgoerzen@complete.org>	patch-12
 
     Summary:
