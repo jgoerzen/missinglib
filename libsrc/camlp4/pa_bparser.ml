@@ -10,6 +10,8 @@
 (*                                                                     *)
 (***********************************************************************)
 
+(* bparser support Copyright (c) 2004 John Goerzen *)
+
 (* $Id: pa_op.ml,v 1.6 2003/07/10 12:28:21 michel Exp $ *)
 
 open Pcaml;

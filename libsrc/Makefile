@@ -16,6 +16,8 @@
 #    along with this program; if not, write to the Free Software
 #    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
+CAMLP4SOURCES := camlp4/pa_bparser.ml
+CAMLP4CMO := $(patsubst %.ml,%.cmo,$(CAMLP4SOURCES))
 SOURCES = compose/compose.mli compose/compose.ml \
 	  compose/composeoper.mli compose/composeoper.ml \
 	  strutil/strutil.mli strutil/strutil.ml \
@@ -69,10 +71,11 @@ DOC_FILES := compose/compose.mli compose/compose.ml \
 	anyDBM/anyDBM.mli \
 	anyDBM/anyDBM.ml \
 	anyDBM/anyDBM_String.mli \
-	anyDBM/anyDBM_String.ml
+	anyDBM/anyDBM_String.ml \
+	camlp4doc/pa_bparser.mli 
 
 MLIFILES := $(filter %.mli,$(SOURCES))
-LIBINSTALL_FILES := META $(MLIFILES) $(patsubst %.mli,%.cmi,$(MLIFILES)) $(RESULT).cma $(RESULT).a
+LIBINSTALL_FILES := META $(MLIFILES) $(patsubst %.mli,%.cmi,$(MLIFILES)) $(RESULT).cma $(RESULT).a $(CAMLP4CMO)
 PATHTOTOP := ..
 
 -include ../Makefile.setup
@@ -80,7 +83,11 @@ ifeq ($(HAS_NATIVE),YES)
   LIBINSTALL_FILES := $(LIBINSTALL_FILES) $(RESULT).cmxa
 endif
 
+camlp4/%.cmo: camlp4/%.ml 
+	ocamlc -pp "camlp4r pa_extend.cmo q_MLast.cmo" -c -o $@ -I +camlp4 $<
+
 interact: all
 	ocaml $(INCLDIRS) unix.cma str.cma missinglib.cma
 
-all: bcl $(NATIVE_LIB_TARGET)
+all: bcl $(NATIVE_LIB_TARGET) $(CAMLP4CMO)
+

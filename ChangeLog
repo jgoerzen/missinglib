@@ -2,6 +2,43 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-08-31 21:37:23 GMT	John Goerzen <jgoerzen@complete.org>	patch-66
+
+    Summary:
+      Merged in pa_bparser support
+    Revision:
+      missinglib--head--0.0--patch-66
+
+
+    new files:
+     libsrc/camlp4/.arch-ids/=id libsrc/camlp4doc/.arch-ids/=id
+     libsrc/camlp4doc/pa_bparser.mli
+
+    removed files:
+     unmerged/.arch-ids/=id
+
+    modified files:
+     ChangeLog libsrc/META libsrc/Makefile
+     libsrc/camlp4/pa_bparser.ml
+
+    renamed files:
+     unmerged/.arch-ids/pa_op.ml.id
+       ==> libsrc/camlp4/.arch-ids/pa_bparser.ml.id
+     unmerged/.arch-ids/pa_op.orig.ml.id
+       ==> libsrc/camlp4/.arch-ids/pa_op.ml.ocaml-orig.id
+     unmerged/pa_op.ml
+       ==> libsrc/camlp4/pa_bparser.ml
+     unmerged/pa_op.orig.ml
+       ==> libsrc/camlp4/pa_op.ml.ocaml-orig
+
+    new directories:
+     libsrc/camlp4 libsrc/camlp4/.arch-ids libsrc/camlp4doc
+     libsrc/camlp4doc/.arch-ids
+
+    removed directories:
+     unmerged unmerged/.arch-ids
+
+
 2004-08-31 20:28:46 GMT	John Goerzen <jgoerzen@complete.org>	patch-65
 
     Summary:

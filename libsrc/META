@@ -1,6 +1,15 @@
 name="Missinglib"
-version="0.0.1"
+version="0.5.0"
 description="Utility libraries for OCaml"
 requires="str unix"
 archive(byte)="missinglib.cma"
 archive(native)="missinglib.cmxa"
+
+package "pa_bparser" (
+  version = "0.5.0"
+  description = "Backtracking Parser Extension for Camlp4"
+  requires = "camlp4 missinglib"
+  archive(syntax,preprocessor) = "pa_bparser.cmo"
+  archive(syntax,toploop) = "pa_bparser.cmo"
+)
+
