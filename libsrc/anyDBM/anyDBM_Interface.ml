@@ -100,6 +100,9 @@ struct
       
     method private virtual do_iter: (string -> string -> unit) -> unit
     method iter f = self#assert_read; self#do_iter f
+
+    method private virtual do_close: unit
+    method close = self#do_close; flag <- {read=false;write=false;create=false}
   end;;
 
 end;;

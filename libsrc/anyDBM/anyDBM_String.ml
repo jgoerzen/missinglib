@@ -17,21 +17,53 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *)
 
 open AnyDBM_Interface;;
-open Hashtblutil;;
+open AnyDBMUtils;;
 open Hashtbl;;
+open Hashtblutil;;
 
 class anyDBM_String filename flag mode =
 object(self)
-  inherit anyDBM_Base filename flag mode
+  inherit AnyDBMUtils.anyDBM_Base flag
+  val mainhash = begin
+    if flag.read then begin
+      let openflags = Open_text :: (flags_new_to_open flag Open_rdonly) in
+      let fd = open_in_gen openflags mode filename in
+      let hash = ichan_to_strhash fd in
+      close_in fd;
+      hash
+    end else 
+      create 5
+  end
 
-  initializer
-    begin
-      let openflags = Open_text :: (self#flaglist_of_flag Open_rdonly) in
+  method private do_close =
+    if flag.write then begin
+      let openflags = Open_text :: (flags_new_to_open flag Open_wronly) in
+      let fd = open_out_gen openflags mode filename in
+      strhash_to_ochan mainhash fd;
+      close_out fd
+    end
 
-    if flag.write and flag.create 
-    
+
+  method private do_add key value = 
+    if mem mainhash key then
+      raise (Dbm_error "Entry already exists")
+    else
+      add mainhash key value
+
+  method private do_find key =
+    find mainhash key
+
+  method private do_replace key value =
+    replace mainhash key value
+
+  method private do_remove key =
+    remove mainhash key
+
+  method private do_iter func =
+    iter func mainhash
+      
 end;;
     
 let opendbm filename flag mode =
-  let db = new anyDBM_String filename flag mode in
-  (db : anyDBM_String : t);;
+  new anyDBM_String filename (flags_old_to_new flag) mode;;
+

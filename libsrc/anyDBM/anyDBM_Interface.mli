@@ -133,6 +133,9 @@ module AnyDBMUtils: sig
 
     method private virtual do_iter: (string -> string -> unit) -> unit
     method iter: (string -> string -> unit) -> unit
+
+    method private virtual do_close: unit
+    method close: unit
   end
 
 end

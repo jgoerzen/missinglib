@@ -5,6 +5,9 @@ SUBDIRS := libsrc test
 defaulttgt:
 	$(MAKE) all
 
+interact: defaulttgt
+	cd libsrc && $(MAKE) interact
+
 printenv:
 	@$(MAKE) -f Makefile.setup printenv PATHTOTOP=.
 

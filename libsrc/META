@@ -1,6 +1,6 @@
 name="Missinglib"
 version="0.0.1"
 description="Utility libraries for OCaml"
-requires="str"
+requires="str unix"
 archive(byte)="missinglib.cma"
 archive(native)="missinglib.cmxa"

@@ -38,10 +38,16 @@ SOURCES = compose/compose.mli compose/compose.ml \
 	  configParser/configParser.mli \
 	  configParser/configParser.ml \
 	  anyDBM/anyDBM_Interface.mli \
-	  anyDBM/anyDBM_Interface.ml
-OCAMLDOC = ocamldoc -pp camlp4o -stars -sort -I strutil -I compose -I hashtblutil -I listutil -I lexingutil -I slice \
+	  anyDBM/anyDBM_Interface.ml \
+	  anyDBM/anyDBM_String.mli \
+	  anyDBM/anyDBM_String.ml
+
+
+INCLDIRS = -I strutil -I compose -I hashtblutil -I listutil -I lexingutil -I slice \
 	   -I anyDBM \
 	    -I configParser -I fileutil -I unixutil -I streamutil
+	    
+OCAMLDOC = ocamldoc -pp camlp4o -stars -sort $(INCLDIRS)
 #LIBS = str
 RESULT = missinglib
 OCAMLYACC := ocamlyacc -v
@@ -59,7 +65,9 @@ DOC_FILES := compose/compose.mli compose/compose.ml \
 	slice/sliceoper.mli slice/sliceoper.ml \
 	configParser/configParser.mli \
 	anyDBM/anyDBM_Interface.mli \
-	anyDBM/anyDBM_Interface.ml
+	anyDBM/anyDBM_Interface.ml \
+	anyDBM/anyDBM_String.mli \
+	anyDBM/anyDBM_String.ml
 
 MLIFILES := $(filter %.mli,$(SOURCES))
 LIBINSTALL_FILES := META $(MLIFILES) $(patsubst %.mli,%.cmi,$(MLIFILES)) $(RESULT).cma $(RESULT).a
@@ -69,5 +77,8 @@ PATHTOTOP := ..
 ifeq ($(HAS_NATIVE),YES)
   LIBINSTALL_FILES := $(LIBINSTALL_FILES) $(RESULT).cmxa
 endif
+
+interact: all
+	ocaml $(INCLDIRS) unix.cma str.cma missinglib.cma
 
 all: bcl $(NATIVE_LIB_TARGET)
