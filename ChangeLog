@@ -2,6 +2,18 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-08-31 18:18:50 GMT	John Goerzen <jgoerzen@complete.org>	patch-64
+
+    Summary:
+      Major refactor of bnf support code to better support stream operations
+    Revision:
+      missinglib--head--0.0--patch-64
+
+
+    modified files:
+     ChangeLog libsrc/bnf/bNFsupport.ml libsrc/bnf/bNFsupport.mli
+
+
 2004-08-31 17:54:50 GMT	John Goerzen <jgoerzen@complete.org>	patch-63
 
     Summary:

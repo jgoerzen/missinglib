@@ -22,19 +22,31 @@ open Stream;;
 
 class ['a] lazyStream (parentstream: 'a Stream.t) =
 object (self)
-  val str = parentstream
   val mutable cache = []
+  val mutable cstream = parentstream
+  val mutable lastconsume = 0
 
-  method next_item = 
+  initializer 
+    cstream <- Stream.from self#nth_item
+
+  method nth_item n = 
     let oldlen = length cache in
-    let newval = npeek (oldlen + 1) parentstream in
-    if (length newval) != (oldlen + 1) then
-      None
+    if n < oldlen then
+      Some (nth cache n)
     else begin
-      cache <- newval;
-      Some (nth newval oldlen);
+      let newval = npeek (n+1) parentstream in
+      if (length newval) != (n+1) then
+        None
+      else begin
+        cache <- newval;
+        Some (nth newval n);
+      end;
     end;
+
+  method next_item = self#nth_item (length cache)
+
     
+    (*
   method consumeall = 
     let rec thefunc () = match cache with
         [] -> ()
@@ -43,9 +55,24 @@ object (self)
     thefunc ()
 
   method reset = cache <- []
+    *)
+
+  method consume_stream = 
+    let n_to_consume = count cstream - lastconsume in
+    let rec consumeit n = match n with
+        0 -> ()
+      | x -> junk parentstream; cache <- tl cache; consumeit (x -1) in
+    consumeit n_to_consume;
+    lastconsume <- count cstream;
+
+    (*
 
   method to_stream = let rec thefunc () = match self#next_item with
       None -> [< >]
     | Some item -> [< 'item; thefunc() >]
   in thefunc ()
+    *)
+    
+  method to_stream = cstream
+
 end;;
