@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-07-29 18:09:58 GMT	John Goerzen <jgoerzen@complete.org>	patch-43
+
+    Summary:
+      Added reading/writing hash tables
+    Revision:
+      missinglib--head--0.0--patch-43
+
+
+    modified files:
+     ChangeLog debian/changelog libsrc/Makefile
+     libsrc/hashtblutil/hashtblutil.ml
+     libsrc/hashtblutil/hashtblutil.mli test/testhashtblutil.ml
+
+
 2004-07-27 14:38:14 GMT	John Goerzen <jgoerzen@complete.org>	patch-42
 
     Summary:

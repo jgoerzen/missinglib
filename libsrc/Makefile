@@ -19,6 +19,7 @@
 SOURCES = compose/compose.mli compose/compose.ml \
 	  compose/composeoper.mli compose/composeoper.ml \
 	  strutil/strutil.mli strutil/strutil.ml \
+	  streamutil/streamutil.mli streamutil/streamutil.ml \
 	  hashtblutil/hashtblutil.mli hashtblutil/hashtblutil.ml \
 	listutil/listutil.mli listutil/listutil.ml \
 	  lexingutil/lexingutil.mli lexingutil/lexingutil.ml \
@@ -26,7 +27,6 @@ SOURCES = compose/compose.mli compose/compose.ml \
 	  slice/slice.mli slice/slice.ml \
 	  slice/sliceoper.mli slice/sliceoper.ml \
 	  indexed/indexed.ml \
-	  streamutil/streamutil.mli streamutil/streamutil.ml \
 	  fileutil/fileutil.mli fileutil/fileutil.ml \
 	  unixutil/unixutil.mli unixutil/unixutil.ml \
 	  configParser/configParser_types.ml \
@@ -45,11 +45,11 @@ OCAMLYACC := ocamlyacc -v
 DOC_FILES := compose/compose.mli compose/compose.ml \
 	compose/composeoper.mli compose/composeoper.ml \
 	strutil/strutil.mli strutil/strutil.ml \
+	streamutil/streamutil.mli streamutil/streamutil.ml \
 	hashtblutil/hashtblutil.mli hashtblutil/hashtblutil.ml \
 	hashtblutil/hashtbloper.mli hashtblutil/hashtbloper.ml \
 	listutil/listutil.mli listutil/listutil.ml \
 	lexingutil/lexingutil.mli lexingutil/lexingutil.ml \
-	streamutil/streamutil.mli streamutil/streamutil.ml \
 	fileutil/fileutil.mli fileutil/fileutil.ml \
 	unixutil/unixutil.mli unixutil/unixutil.ml \
 	slice/slice.mli slice/slice.ml \

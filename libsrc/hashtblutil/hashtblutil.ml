@@ -42,3 +42,19 @@ let convkeys_copy hasht convfunc =
   let newhash = copy hasht in
   convkeys newhash convfunc;
   newhash;;
+
+let str_of_stritem key value = 
+  Printf.sprintf "%S:%S\n" key value;;
+
+let stritem_of_str instr =
+  Scanf.sscanf instr "%S:%S" (fun k v -> k,v);;
+  
+let strhash_to_ochan hasht ochan =
+  Hashtbl.iter (fun k v -> output_string ochan (str_of_stritem k v)) hasht;;
+
+let ichan_to_strhash ichan = 
+  let hasht = create 5 in
+  let s = Streamutil.of_channel_lines ichan in
+  Stream.iter (fun line -> let v = stritem_of_str line in
+                 add hasht (fst v) (snd v)) s;
+  hasht;;

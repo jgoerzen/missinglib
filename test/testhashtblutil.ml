@@ -52,11 +52,18 @@ let test_merge () =
   (* FIXME: WRITE ME *)
   ();;
 
+let test_str () =
+  let s = str_of_stritem "black\n" "white" in
+  assert_equal ~msg:"first" "\"black\\n\":\"white\"\n" s;
+  assert_equal ~msg:"result" ("black\n", "white")
+    (stritem_of_str s);;
+
 let suite = "testhashtblutil" >:::
   ["map" >:: test_map;
    "keys" >:: test_keys;
    "values" >:: test_values;
    "items" >:: test_items;
    "merge" >:: test_merge;
+   "str" >:: test_str;
   ];;
 
