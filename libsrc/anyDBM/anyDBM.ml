@@ -28,15 +28,15 @@ of type t.  The details of this class are not important for regular AnyDBM
 users.  Methods of this class correspond to the standard functions in
 {!AnyDBM}.  Please refer to those functions for documentation
 on these methods. *)
-class type t =
+class virtual t =
 object
 
-  method close : unit
-  method find : string -> string
-  method add : string -> string -> unit
-  method replace: string -> string -> unit
-  method remove : string -> unit
-  method iter : (string -> string -> unit) -> unit
+  method virtual close : unit
+  method virtual find : string -> string
+  method virtual add : string -> string -> unit
+  method virtual replace: string -> string -> unit
+  method virtual remove : string -> unit
+  method virtual iter : (string -> string -> unit) -> unit
 end;;
 
 
@@ -75,7 +75,7 @@ struct
 
   class virtual anyDBM_Base (flag_parm:anydbm_open_flag) =
   object (self)
-    (* inherit t *)
+    inherit t
     val mutable flag = flag_parm
 
     method private can_write = flag.write

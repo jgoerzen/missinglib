@@ -69,14 +69,14 @@ type open_flag =
   | Dbm_rdwr                            (** Read/write mode *)
   | Dbm_create                          (** Create file if it doesn't exist *)
     
-class type t = 
+class virtual t:
 object
-  method close : unit
-  method find : string -> string
-  method add : string -> string -> unit
-  method replace: string -> string -> unit
-  method remove: string -> unit
-  method iter: (string -> string -> unit) -> unit
+  method virtual close : unit
+  method virtual find : string -> string
+  method virtual add : string -> string -> unit
+  method virtual replace: string -> string -> unit
+  method virtual remove: string -> unit
+  method virtual iter: (string -> string -> unit) -> unit
 end
 
 exception Dbm_error of string
@@ -130,6 +130,7 @@ module AnyDBMUtils: sig
   (** Utility class for implementators *)
   class virtual anyDBM_Base : anydbm_open_flag -> 
   object
+    inherit t
     method private can_write : bool
     method private can_read : bool
     method private assert_write : unit
