@@ -80,18 +80,18 @@ let abspath name =
   if not (Filename.is_relative name) then
     name
   else begin
-    let startdir = os.getcwd() in
+    let startdir = getcwd() in
     if isdir name then begin
-      os.chdir name;
-      let retval = os.getcwd () in
-      os.chdir startdir;
+      chdir name;
+      let retval = getcwd () in
+      chdir startdir;
       retval;
     end else begin
       let base = Filename.basename name in
       let dirn = Filename.dirname name in
-      os.chdir dirn;
-      let reval = Filename.concat (os.getcwd()) base in
-      os.chdir startdir;
+      chdir dirn;
+      let retval = Filename.concat (getcwd()) base in
+      chdir startdir;
       retval;
     end;
   end;;

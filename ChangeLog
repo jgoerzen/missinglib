@@ -2,6 +2,18 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-08-06 21:54:36 GMT	John Goerzen <jgoerzen@complete.org>	patch-59
+
+    Summary:
+      Fixed silly brainos
+    Revision:
+      missinglib--head--0.0--patch-59
+
+
+    modified files:
+     ChangeLog libsrc/unixutil/unixutil.ml
+
+
 2004-08-06 21:51:28 GMT	John Goerzen <jgoerzen@complete.org>	patch-58
 
     Summary:
