@@ -2,6 +2,32 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-08-03 19:21:13 GMT	John Goerzen <jgoerzen@complete.org>	patch-46
+
+    Summary:
+      Renamed
+    Revision:
+      missinglib--head--0.0--patch-46
+
+
+    modified files:
+     ChangeLog
+
+    renamed files:
+     libsrc/anydbm/.arch-ids/=id
+       ==> libsrc/anyDBM/.arch-ids/=id
+
+    new directories:
+     libsrc/anyDBM/.arch-ids
+
+    removed directories:
+     libsrc/anydbm/.arch-ids
+
+    renamed directories:
+     libsrc/anydbm
+       ==> libsrc/anyDBM
+
+
 2004-08-03 19:20:44 GMT	John Goerzen <jgoerzen@complete.org>	patch-45
 
     Summary:
