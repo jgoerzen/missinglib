@@ -250,11 +250,26 @@ class rawConfigParser :
     method optionxform: string -> string
   end
 
+(**
+
+{5 Interpolation}
+
+The configParser class extends {!ConfigParser.rawConfigParser}.  It adds
+interpolation.  As an example, consider the following file: {[
+ arch = i386
+ project = test
+ filename = test_%(arch)s.c
+ dir = /usr/src/%(filename)s ]}
+
+You could then expect the following results: {[
+get "DEFAULT" "filename" -> "test_i386.c"
+get "DEFAULT" "dir" -> "/usr/src/test_i386.c" ]}
+
+*)
 
 class configParser :
   object
     inherit rawConfigParser
 
-    method get: ?default:string -> string -> string -> string
   end
       

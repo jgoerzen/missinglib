@@ -2,6 +2,19 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-06-05 16:18:51 GMT	John Goerzen <jgoerzen@complete.org>	patch-22
+
+    Summary:
+      Wrote tests for interpolation
+    Revision:
+      missinglib--head--0.0--patch-22
+
+
+    modified files:
+     ChangeLog libsrc/configParser/configParser.mli
+     test/testconfigparser.ml
+
+
 2004-06-05 15:54:31 GMT	John Goerzen <jgoerzen@complete.org>	patch-21
 
     Summary:

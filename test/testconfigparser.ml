@@ -26,11 +26,16 @@ let makecp doc =
   cp#readstring doc;
   cp;;
 
+let makeicp doc =
+  let cp = new configParser in
+  cp#readstring doc;
+  cp;;
+
 let test_instantiate () =
   let cp = new rawConfigParser in
   assert_equal ~msg:"no sections" (List.length cp#sections) 0;;
 
-let test_simpleparse = [
+let test_simpleparse (makecp:string -> rawConfigParser) = [
   "empty" >:: (fun () -> let cp = makecp "" in
     assert_equal ~msg:"empty doc, no sections" (List.length cp#sections) 0
     );
@@ -115,11 +120,30 @@ let test_defaults () =
   assert_equal ~msg:"default float" 17.34 (cp#getfloat ~default:17.34 "foo" "bar");
   assert_equal ~msg:"default bool" true (cp#getbool ~default:true "foo" "bar");;
 
+let test_interpolate = [
+  "example" >:: (fun () -> let cp = makecp "[DEFAULT]
+arch = i386
+
+[builder]
+filename = test_%(arch)s.c
+dir = /usr/src/%(filename)
+percent = 5%%" in
+                 string_equal "basic" (cp#get "DEFAULT" "arch") "i386";
+                 string_equal "filename" "test_i386.c" 
+                   (cp#get "builder" "filename");
+                 string_equal "dir" "/usr/src/test_i386.c"
+                   (cp#get "builder" "dir");
+                 string_equal "percents" (cp#get "builder" "percent") "5%";
+                );
+];;
+
 
 let suite = "testconfigparser" >:::
   ["test_instantiate" >:: test_instantiate;
-   "test_simpleparse" >::: test_simpleparse;
+   "test_simpleparse" >::: test_simpleparse makecp;
+   "test_simpleparse_interp" >::: test_simpleparse makeicp;
    "test_extensionlines" >:: test_extensionlines; 
    "test_defaults" >:: test_defaults;
+   "test_interpolate" >::: test_interpolate;
   ];;
 
