@@ -20,6 +20,8 @@ findlib and is designed to install without complexity on a variety of
 systems.  It could also easily be embedded within your own source trees
 so that users need not have it installed beforehand.
 
+** THIS IS CURRENTLY ALPHA-QUALITY CODE; MAJOR API FLUCTUATIONS MAY YET OCCUR.
+
 -------------------------
 Quick Start
 -------------------------
