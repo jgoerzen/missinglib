@@ -51,4 +51,12 @@ let sub l start len =
     raise (Invalid_argument "Listutil.sub")
   else
     sub_max_len [] (sub_chop_start l start) len;;
-    
+   
+let rec take n l = match n with
+    0 -> []
+  | n -> if n < 1 then raise (Failure "take list") else hd l :: take (n-1) (tl l);;
+
+let rec drop n l = match n with 
+    0 -> l
+  | n -> if n < 1 then raise (Failure "drop list") else drop (n-1) (tl l);;
+

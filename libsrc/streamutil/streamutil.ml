@@ -60,18 +60,20 @@ let rec to_list = parser
   | [< >] -> [];;
 
 (** Returns a finite stream representing the first n elements from
-the given stream. *)
+the given stream.
+ *)
 let rec take n s = 
   let p = parser [< 'x; xs >] -> [< 'x; take (n - 1) xs >] in
   match n with
     0 -> [< >]
-  | n -> if n < 1 then raise Not_found else p s;;
+  | n -> if n < 1 then raise (Failure "take stream") else p s;;
 
-(** Removes the first n elements from the start of the given stream.
+(** Removes the first n elements from the start of the given stream.   Unlike
+operations on lists, this is a destructive operation.
 *)
 let rec drop n s = match n with
   0 -> ()
-  | n -> if n < 1 then raise Not_found else Stream.next s; drop (n-1) s;;
+  | n -> if n < 1 then raise (Failure "drop stream") else Stream.next s; drop (n-1) s;;
 
 (** {6 Stream parser utilities}
 

@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-06-17 20:30:26 GMT	John Goerzen <jgoerzen@complete.org>	patch-35
+
+    Summary:
+      Added take/drop list support
+    Revision:
+      missinglib--head--0.0--patch-35
+
+
+    modified files:
+     ChangeLog libsrc/listutil/listutil.ml
+     libsrc/listutil/listutil.mli libsrc/streamutil/streamutil.ml
+     test/testlistutil.ml
+
+
 2004-06-17 18:49:02 GMT	John Goerzen <jgoerzen@complete.org>	patch-34
 
     Summary:

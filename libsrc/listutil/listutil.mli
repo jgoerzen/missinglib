@@ -43,3 +43,16 @@ val remove_assoc_all: ('a * 'b) list -> 'a -> ('a * 'b) list
 * a list with [len] elements will be returned, with elements starting at
 * [start] (where element 0 is the first element). *)
 val sub: 'a list -> int -> int -> 'a list
+
+(** This function returns the first n elements of the given list.
+
+Raises Failure on invalid arguments or if n is greater than the length of the
+list. *)
+val take: int -> 'a list -> 'a list
+
+(** This function removes the first n elements from the given list and
+returns the remaining elements.
+
+Raises Failure on invalid arguments or if n is greater than the length of
+the list. *)
+val drop: int -> 'a list -> 'a list

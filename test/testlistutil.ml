@@ -38,7 +38,28 @@ let test_replace () =
     [[], ["testkey", 101]
     ];;
 
+let test_take () =
+  let l = [0; 1; 2; 3; 4; 5; 6] in
+  assert_equal [] (take 0 l);
+  assert_equal [0] (take 1 l);
+  assert_equal [0; 1; 2] (take 3 l);
+  assert_raises (Failure "tl") (fun () -> take 15 l);
+  assert_raises (Failure "take list") (fun () -> take (-5) l);
+;;
+
+let test_drop () =
+  let l = [0; 1; 2; 3; 4; 5; 6] in
+  assert_equal [] (drop 7 l);
+  assert_equal [6] (drop 6 l);
+  assert_equal [4; 5; 6] (drop 4 l);
+  assert_equal l (drop 0 l);
+  assert_raises (Failure "tl") (fun () -> drop 15 l);
+  assert_raises (Failure "drop list") (fun () -> drop (-5) l);
+;;
+
 let suite = "testlistutil" >:::
   ["test_remove_assoc_all" >:: test_remove_assoc_all;
-   "test_replace" >:: test_replace];;
+   "test_replace" >:: test_replace;
+    "take" >:: test_take;
+    "drop" >:: test_drop];;
 
