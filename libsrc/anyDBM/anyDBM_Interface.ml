@@ -21,33 +21,18 @@ type open_flag = Dbm_rdonly | Dbm_wronly | Dbm_rdwr | Dbm_create;;
 exception Dbm_error of string;;
 
 (** Implementations of AnyDBM must provide an implementing object
-of type t. *)
-
+of type t.  The details of this class are not important for regular AnyDBM
+users.  Methods of this class correspond to the standard functions in
+{!AnyDBM_Interface}.  Please refer to those functions for documentation
+on these methods. *)
 class type t =
 object
 
-  (** Close the connection to the database, saving any
-      unsaved changes. *)
   method close : unit
-
-  (** Returns the data associated with the given key or raises Not_found
-    if the key is not present. *)
   method find : string -> string
-
-  (** Adds the key/data pair given.  Raises Dbm_error "Entry already exists"
-    if the key is already present. *)
   method add : string -> string -> unit
-
-  (** Add the key/value pair to the database, replacing any existing
-    pair with the same key. *)
   method replace: string -> string -> unit
-
-  (** Remove the key/value pair with the given key.  If there is no key,
-    raise Dbm_error "dbm_delete". *)
   method remove : string -> unit
-
-  (** iter f db applies f to each (key, data) pair in the database db.  f
-  receives key as frist argument and data as second argument. *)
   method iter : (string -> string -> unit) -> unit
 end;;
 

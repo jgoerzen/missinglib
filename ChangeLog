@@ -2,6 +2,25 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-08-04 13:42:14 GMT	John Goerzen <jgoerzen@complete.org>	patch-49
+
+    Summary:
+      Completed basic AnyDBM interface
+    Revision:
+      missinglib--head--0.0--patch-49
+
+
+    new files:
+     libsrc/compiletests/.arch-ids/=id libsrc/compiletests/dbm.ml
+
+    modified files:
+     ChangeLog libsrc/anyDBM/anyDBM_Interface.ml
+     libsrc/anyDBM/anyDBM_Interface.mli
+
+    new directories:
+     libsrc/compiletests libsrc/compiletests/.arch-ids
+
+
 2004-08-03 20:02:16 GMT	John Goerzen <jgoerzen@complete.org>	patch-48
 
     Summary:
