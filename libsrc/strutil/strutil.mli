@@ -59,6 +59,10 @@ val rstrip: string -> string
   string list = [""; "jgoerzen"; ""; "foo"; "bar"; ""] ]} *)
 val split: string -> string -> string list
 
+(** Splits a string deliminted by whitespace into multiple component
+strings.  Leading or trailing whitespace is ignored. *)
+val split_ws: string -> string list
+
 (** Makes one output string from the given string list by inserting
 * the delim between each element.  An alias for String.concat. 
 *   @return A list of strings.  Each item in the list is one that as

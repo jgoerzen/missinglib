@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-06-05 16:51:14 GMT	John Goerzen <jgoerzen@complete.org>	patch-26
+
+    Summary:
+      Added split_ws and tests
+    Revision:
+      missinglib--head--0.0--patch-26
+
+
+    modified files:
+     ChangeLog debian/changelog debian/control
+     libsrc/strutil/strutil.ml libsrc/strutil/strutil.mli
+     test/teststrutil.ml
+
+
 2004-06-05 16:37:53 GMT	John Goerzen <jgoerzen@complete.org>	patch-25
 
     Summary:

@@ -1,3 +1,11 @@
+missinglib (0.4.0) unstable; urgency=low
+
+  * New class: configParser, supporting interpolation.
+	
+  * Fixed description formatting.  Closes: #247266.
+
+ -- John Goerzen <jgoerzen@complete.org>  Sat,  5 Jun 2004 11:39:19 -0500
+
 missinglib (0.0.1-2) unstable; urgency=low
 
   * Added build-dep on libounit-ocaml-dev.  Closes: #248223.

@@ -39,9 +39,18 @@ let test_string_of_char () =
   mapassert_equal "string_of_char" string_of_char
     [' ', " "; 'a', "a"; '\n', "\n"];;
 
+let test_split_ws () =
+  assert_equal ~msg:"empty" [] (split_ws "   ");
+  assert_equal ~msg:"null" [] (split_ws "");
+  assert_equal ~msg:"single" ["asdf"] (split_ws " asdf\n");
+  assert_equal ~msg:"several" ["one"; "two"; "three"] (split_ws "  one\ntwo \tthree \n");
+;;
+
+
 let suite = "teststrutil" >:::
   ["lstrip" >:: test_lstrip; 
    "rstrip" >:: test_rstrip;
    "strip" >:: test_strip;
+   "split_ws" >:: test_split_ws;
     "string_of_char" >:: test_string_of_char ];;
 

@@ -16,6 +16,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *)
 let wschars = [' '; '\t'; '\r'; '\n'];;
+let wsregexp = Str.regexp "[ \n\t]+";;
 
 let rec lstrip s = 
   if String.length s < 1 then s else
@@ -42,3 +43,6 @@ let string_of_char = String.make 1;;
 let split delim s = Str.split_delim (Str.regexp_string delim) s;;
 
 let join = String.concat;;
+
+let split_ws instr = Str.split wsregexp (strip instr);;
+

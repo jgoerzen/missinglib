@@ -11,15 +11,15 @@ Depends: ${shlibs:Depends}, ${misc:Depends}, ocaml-3.07, ocaml-findlib
 Description: Library of utility functions for OCaml
  The following modules are are provided:
  .
- ConfigParser            System for parsing configuration files
- Hashtbloper             Hash table convenience operators
- Hashtblutil             Hash table utilities
- Lexingutil              Lexing-related utilities
- Listutil                List-manipulation utilities
- Slice                   Underlying API for Slice operators
- Sliceoper               Flexible subparts of arrays, lists, and strings
- Streamutil              Stream parser utilities
- Strutil                 String-related utilities
+  ConfigParser            System for parsing configuration files
+  Hashtbloper             Hash table convenience operators
+  Hashtblutil             Hash table utilities
+  Lexingutil              Lexing-related utilities
+  Listutil                List-manipulation utilities
+  Slice                   Underlying API for Slice operators
+  Sliceoper               Flexible subparts of arrays, lists, and strings
+  Streamutil              Stream parser utilities
+  Strutil                 String-related utilities
  .
  The entire library has no prerequisites save the OCaml standard library and
  findlib and is designed to install without complexity on a variety of
