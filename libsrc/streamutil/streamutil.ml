@@ -44,12 +44,14 @@ reflects the changes. *)
 original stream for which func returns true. *)
 let rec filter func = parser
     [< 'x; xs >] -> if func x then [< 'x; filter func xs >] else 
-      [< filter func xs >];;
+      [< filter func xs >]
+  | [< >] -> [< >];;
 
 (** Given a function, returns a new stream with the results of func
 applied to each element. *)
 let rec map func = parser
-    [< 'x; xs >] -> [< 'func x; map func xs >];;
+    [< 'x; xs >] -> [< 'func x; map func xs >]
+  | [<  >] -> [< >];;
 
 (** Converts a stream to a list.  WARNING: this will crash your program if
 used on infinite or very large streams.  Use only on finite streams! *)
@@ -67,7 +69,9 @@ let rec take n s =
 
 (** Removes the first n elements from the start of the given stream.
 *)
-let drop n s = ignore (take n s);;
+let rec drop n s = match n with
+  0 -> ()
+  | n -> if n < 1 then raise Not_found else Stream.next s; drop (n-1) s;;
 
 (** {6 Stream parser utilities}
 

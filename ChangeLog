@@ -2,6 +2,19 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-06-17 18:49:02 GMT	John Goerzen <jgoerzen@complete.org>	patch-34
+
+    Summary:
+      Fixed bugs detected by tests
+    Revision:
+      missinglib--head--0.0--patch-34
+
+
+    modified files:
+     ChangeLog libsrc/streamutil/streamutil.ml
+     test/teststreamutil.ml
+
+
 2004-06-17 18:33:20 GMT	John Goerzen <jgoerzen@complete.org>	patch-33
 
     Summary:
