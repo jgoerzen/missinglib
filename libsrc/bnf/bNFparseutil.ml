@@ -37,8 +37,8 @@ let optparse_1 funchead args =
 let test_char_patt ?(i=insens) patt c = 
   let c = cx i c in
   match patt with
-    C x -> c = x
-  | R (x, y) -> x <= c && c <= y;;
+    C x -> c = (cx i x)
+  | R (x, y) -> (cx i x) <= c && c <= (cx i y);;
 
 let rec test_range ?(i=insens) pattlist c = match pattlist with
     [] -> false
@@ -84,5 +84,21 @@ let s_and predlist istream =
     (fst (List.hd processed))#consume_stream;
     List.map snd processed;
   end;;
+
+let mstring ?(i=insens) s istream = 
+  let comparisonstream = Stream.of_string s in
+  let cs = new BNFsupport.lazyStream istream in
+  let rec p checkdata instream =
+    match checkdata with 
+        [] -> []
+      | x :: xs -> begin
+          let y = Stream.next instream in
+          if not ((cx i y) = (cx i x)) then raise Stream.Failure else
+            x :: (p xs instream)
+        end
+  in
+  let res = p (Streamutil.to_list comparisonstream) cs#to_stream in
+  cs#consume_stream;
+  Strutil.string_of_charlist res;;
 
 let eof = Stream.empty;;

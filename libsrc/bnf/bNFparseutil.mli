@@ -58,6 +58,9 @@ val range: ?i:bool -> repatt list -> char Stream.t -> char
 (** Stream parser: find any character NOT in the given range. *)
 val range_n: ?i:bool -> repatt list -> char Stream.t -> char
 
+(** Stream parser: find the given string in a character string. *)
+val mstring: ?i:bool -> string -> char Stream.t -> string
+
 (** Returns the character given by the specified integer; an alias for
     [Char.chr]. *)
 val chr: int -> char

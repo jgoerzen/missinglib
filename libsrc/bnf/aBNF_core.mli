@@ -58,7 +58,7 @@ val htab: char t -> char
 val lf: char t -> char
 
 (** Linear white space (past newline), [*(WSP / CRLF WSP)] *)
-val lwsp: char t -> char
+val lwsp: char t -> string
 
 (** 8-bit data *)
 val octet: char t -> char

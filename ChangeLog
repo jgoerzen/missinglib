@@ -2,6 +2,22 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-09-01 18:16:30 GMT	John Goerzen <jgoerzen@complete.org>	patch-78
+
+    Summary:
+      More work on ABNF core and support
+    Revision:
+      missinglib--head--0.0--patch-78
+
+
+    new files:
+     libsrc/bnf/aBNF_def.ml
+
+    modified files:
+     ChangeLog libsrc/bnf/aBNF_core.mli libsrc/bnf/bNFparseutil.ml
+     libsrc/bnf/bNFparseutil.mli
+
+
 2004-09-01 16:14:27 GMT	John Goerzen <jgoerzen@complete.org>	patch-77
 
     Summary:
