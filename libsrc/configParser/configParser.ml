@@ -41,7 +41,7 @@ class rawConfigParser =
 object(self)
   initializer self#add_section "DEFAULT"
   val configfile = make_file ()
-  val getdata = fun obj sname oname -> obj#maingetdata sname oname
+  val mutable getdata = fun obj sname oname -> obj#maingetdata sname oname
   method maingetdata sname oname =
     try
       find (self#section_h sname) (self#optionxform oname)
@@ -110,11 +110,12 @@ exception Interpolation_error of string;;
 class configParser =
 object(self)
   inherit rawConfigParser as super
+  initializer getdata <- 
     (*
-  val interp_getdata = 
     fun ?(raw=false) ?(idepth=10) ?extravars obj sname oname ->
       obj#maininterpgetdata raw idepth extravars sname oname
     *)
+    fun obj sname oname -> obj#maininterpgetdata false 10 None sname oname
   method private maininterpgetdata raw idepth extravars sname oname =
     if raw then self#maingetdata sname oname else
       self#getdata_interp idepth false extravars sname oname
