@@ -19,6 +19,8 @@ ConfigParser            System for parsing configuration files
                         sections and resemble .INI files.  This module
                         is designed to be mostly compatible with
                         Python's ConfigParser module.
+
+Fileutil                File-related utilities
                        
 Hashtbloper             Hash table convenience operators
 
