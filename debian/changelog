@@ -1,3 +1,9 @@
+missinglib (0.4.10) unstable; urgency=medium
+
+  * New upload for new OCaml.
+
+ -- John Goerzen <jgoerzen@complete.org>  Mon, 13 Dec 2004 08:19:53 -0600
+
 missinglib (0.4.9) unstable; urgency=low
 
   * Added new Strutil.trunc function.

@@ -2,6 +2,18 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-12-13 14:22:42 GMT	John Goerzen <jgoerzen@complete.org>	patch-79
+
+    Summary:
+      Preparing upload for new OCaml
+    Revision:
+      missinglib--head--0.0--patch-79
+
+
+    modified files:
+     ChangeLog debian/changelog
+
+
 2004-09-01 18:16:30 GMT	John Goerzen <jgoerzen@complete.org>	patch-78
 
     Summary:
