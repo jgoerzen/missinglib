@@ -2,6 +2,26 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-06-15 21:52:50 GMT	John Goerzen <jgoerzen@complete.org>	patch-29
+
+    Summary:
+      Start of compose support
+    Revision:
+      missinglib--head--0.0--patch-29
+
+
+    new files:
+     libsrc/compose/.arch-ids/=id libsrc/compose/compose.ml
+     libsrc/compose/compose.mli libsrc/compose/composeoper.ml
+     libsrc/compose/composeoper.mli
+
+    modified files:
+     ChangeLog libsrc/Makefile
+
+    new directories:
+     libsrc/compose libsrc/compose/.arch-ids
+
+
 2004-06-05 17:06:49 GMT	John Goerzen <jgoerzen@complete.org>	patch-28
 
     Summary:

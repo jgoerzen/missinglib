@@ -16,7 +16,9 @@
 #    along with this program; if not, write to the Free Software
 #    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-SOURCES = strutil/strutil.mli strutil/strutil.ml \
+SOURCES = compose/compose.mli compose/compose.ml \
+	  compose/composeoper.mli compose/composeoper.ml \
+	  strutil/strutil.mli strutil/strutil.ml \
 	  hashtblutil/hashtblutil.mli hashtblutil/hashtblutil.ml \
 	listutil/listutil.mli listutil/listutil.ml \
 	  lexingutil/lexingutil.mli lexingutil/lexingutil.ml \
@@ -34,12 +36,14 @@ SOURCES = strutil/strutil.mli strutil/strutil.ml \
 	  configParser/configParser_interp.ml \
 	  configParser/configParser.mli \
 	  configParser/configParser.ml
-OCAMLDOC = ocamldoc -stars -sort -I strutil -I hashtblutil -I listutil -I lexingutil -I slice \
+OCAMLDOC = ocamldoc -stars -sort -I strutil -I compose -I hashtblutil -I listutil -I lexingutil -I slice \
 	    -I configParser
 #LIBS = str
 RESULT = missinglib
 OCAMLYACC := ocamlyacc -v
-DOC_FILES := strutil/strutil.mli strutil/strutil.ml \
+DOC_FILES := compose/compose.mli compose/compose.ml \
+	compose/composeoper.mli compose/composeoper.ml \
+	strutil/strutil.mli strutil/strutil.ml \
 	hashtblutil/hashtblutil.mli hashtblutil/hashtblutil.ml \
 	hashtblutil/hashtbloper.mli hashtblutil/hashtbloper.ml \
 	listutil/listutil.mli listutil/listutil.ml \
