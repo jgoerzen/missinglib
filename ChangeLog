@@ -2,6 +2,18 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-08-31 21:47:44 GMT	John Goerzen <jgoerzen@complete.org>	patch-68
+
+    Summary:
+      Added string_of_charlist function
+    Revision:
+      missinglib--head--0.0--patch-68
+
+
+    modified files:
+     ChangeLog libsrc/strutil/strutil.ml libsrc/strutil/strutil.mli
+
+
 2004-08-31 21:42:24 GMT	John Goerzen <jgoerzen@complete.org>	patch-67
 
     Summary:

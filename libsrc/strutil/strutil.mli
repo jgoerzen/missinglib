@@ -74,9 +74,14 @@ val join: string -> string list -> string
 
 (** Given a char, returns a one-character string composed of that character.
 *
-* For instance, (string_of_char 'c') would produce "c".
+* For instance, [string_of_char 'c'] would produce ["c"].
 *)
 val string_of_char: char -> string
+
+(** Given a list of characters, returns a string composed of the characters
+in that list.  For instance, [string_of_charlist ['h'; 'i'] would produce
+["hi"]. *)
+val string_of_charlist: char list -> string
 
 (** Given a string and a length, truncates the string to have, at most,
 len characters.  If the string is shorter that the given len, it is 

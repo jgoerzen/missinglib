@@ -40,6 +40,10 @@ let strip = lstrip %% rstrip;;
 
 let string_of_char = String.make 1;;
 
+let string_of_charlist cl = 
+  let slist = List.map string_of_char cl in
+  String.concat "" slist;;
+
 (** @param delim A string giving the delimiter
 *   @param s The string to split *)
 let split delim s = Str.split_delim (Str.regexp_string delim) s;;
