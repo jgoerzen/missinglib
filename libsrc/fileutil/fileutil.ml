@@ -25,29 +25,32 @@ let abspath ?startdir filename =
 (*  if not (Filename.is_relative filename) then
     filename
   else *)
+  let s = match startdir with
+      None -> Sys.getcwd ()
+    | Some x -> x in
   if String.length filename < 1 then
-    filename
+    s
   else
-    let s = match startdir with
-        None -> Sys.getcwd ()
-      | Some x -> x in
     let rec proclist l =
       print_endline ("proclist " ^ (Strutil.join "/" l));
       match l with 
           [] -> []
         | "" :: xs -> proclist xs
         | "." :: xs -> proclist xs
+        | ".." :: ".." :: xs -> ".." :: ".." :: proclist xs
         | x :: ".." :: xs -> proclist xs
 (*        | ".." :: xs -> raise (Failure "proclist: .. at bad place") *)
-        | x :: xs -> begin 
-            if (List.mem ".." xs) then proclist (x :: proclist xs) else
-              x :: proclist xs
-          end
+        | x :: xs -> x :: proclist xs
+    in
+    let rec modlist l =
+      print_endline ("modlist " ^ (Strutil.join "/" l));
+      let pl = proclist l in
+      if pl = l then l else modlist pl
     in
     let components = 
       (if String.sub filename 0 1 = "/" then [] else (Strutil.split "/" s)) @
       Strutil.split "/" filename in
-    Strutil.join "/" ("" :: proclist components);;
+    "/" ^ (Strutil.join "/" (modlist components));;
 
   
   

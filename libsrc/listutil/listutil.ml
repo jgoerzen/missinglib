@@ -31,8 +31,7 @@ let rec remove_assoc_all l key =
 * @return New list with a [(key, value)] pair added, replacing any existing
 * pair with the same key. *)
 let replace l key value =
-  let retval = remove_assoc_all l key in
-  (key, value) :: retval;;
+  (key, value) :: remove_assoc_all l key;;
 
 (** @raise Invalid_argument If the start and len arguments are invalid
 * with respect to each other or the size of the list, 

@@ -24,7 +24,12 @@ let test_abspath () =
   mapassert_equal_str "abspath" (fun x -> print_endline x; abspath ~startdir:"/usr/share/doc/m/html" x)
     ["index.html", "/usr/share/doc/m/html/index.html";
      ".", "/usr/share/doc/m/html";
+     "", "/usr/share/doc/m/html";
      "..", "/usr/share/doc/m";
+     "../..", "/usr/share/doc";
+     "../../..", "/usr/share";
+     "../../../..", "/usr";
+     "../../../../lib", "/usr/lib";
      "../README", "/usr/share/doc/m/README";
      "/tmp", "/tmp";
      "/tmp/foo/..", "/tmp";

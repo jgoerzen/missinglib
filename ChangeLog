@@ -2,6 +2,19 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-06-17 22:40:29 GMT	John Goerzen <jgoerzen@complete.org>	patch-38
+
+    Summary:
+      abspath tests pass
+    Revision:
+      missinglib--head--0.0--patch-38
+
+
+    modified files:
+     ChangeLog libsrc/fileutil/fileutil.ml
+     libsrc/listutil/listutil.ml test/testfileutil.ml
+
+
 2004-06-17 22:10:25 GMT	John Goerzen <jgoerzen@complete.org>	patch-37
 
     Summary:
