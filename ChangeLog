@@ -2,6 +2,18 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-04-23 18:36:10 GMT	John Goerzen <jgoerzen@complete.org>	patch-3
+
+    Summary:
+      Fixed debian/rules typo
+    Revision:
+      missinglib--head--0.0--patch-3
+
+
+    modified files:
+     ChangeLog debian/rules
+
+
 2004-04-23 18:35:54 GMT	John Goerzen <jgoerzen@complete.org>	patch-2
 
     Summary:
