@@ -2,6 +2,18 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-04-28 15:43:28 GMT	John Goerzen <jgoerzen@complete.org>	patch-10
+
+    Summary:
+      Added tests for default options
+    Revision:
+      missinglib--head--0.0--patch-10
+
+
+    modified files:
+     ChangeLog test/testconfigparser.ml
+
+
 2004-04-27 21:54:22 GMT	John Goerzen <jgoerzen@complete.org>	patch-9
 
     Summary:

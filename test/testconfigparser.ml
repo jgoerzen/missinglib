@@ -103,9 +103,23 @@ let test_extensionlines () =
     "[sect1]\nbaz: l1\n    l2\n    l3\nfoo: bar\nquux: asdf\n\n" 
     cp#to_string;;
 
+let test_defaults () =
+  let cp = makecp "def: ault\n[sect1]\nfoo: bar\nbaz: quuz\nint: 2\nfloat: 3\nbool: yes" in
+  string_equal "default item" "ault" (cp#get "sect1" "def");
+  assert_raises Not_found (fun () -> cp#get "sect1" "abc");
+  assert_raises Not_found (fun () -> cp#get "sect2" "foo");
+  string_equal "default from bad sect" "ault" (cp#get "sect2" "def");
+  string_equal "Using default feature" "defval" (cp#get ~default:"defval"
+  "sect1" "abc");
+  assert_equal ~msg:"default int" 19 (cp#getint ~default:19 "sect2" "nonexistant");
+  assert_equal ~msg:"default float" 17.34 (cp#getfloat ~default:17.34 "foo" "bar");
+  assert_equal ~msg:"default bool" true (cp#getbool ~default:true "foo" "bar");;
+
+
 let suite = "testconfigparser" >:::
   ["test_instantiate" >:: test_instantiate;
    "test_simpleparse" >::: test_simpleparse;
    "test_extensionlines" >:: test_extensionlines; 
+   "test_defaults" >:: test_defaults;
   ];;
 
