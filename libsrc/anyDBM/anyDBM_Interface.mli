@@ -40,19 +40,19 @@ transparent replacement.
 (** {5 Typs and Exceptions} *)
 
 (** Flags used for opening a database. *)
-type open_flag = {
+type anydbm_open_flag = {
   read: bool;                       (** Whether reading is permitted *)
   write: bool;                      (** Whether writing is permitted *)
   create: bool;                     (** Whether to create a non-existing file *)
 }
-    
-(*
-type old_open_flag = 
+
+(** Flags for historic compatibility with Dbm. *)
+type open_flag = 
   | Dbm_rdonly                          (** Read-only mode *)
   | Dbm_wronly                          (** Write-only mode *)
   | Dbm_rdwr                            (** Read/write mode *)
-  | Dbm_create                          (** Create DB if it doesn't exist *)
-*)
+  | Dbm_create                          (** Create file if it doesn't exist *)
+    
 class type t = 
 object
   method close : unit
@@ -95,28 +95,44 @@ val remove: t -> string -> unit
   receives key as frist argument and data as second argument. *)
 val iter: (string -> string -> unit) -> t -> unit
 
-(** {5 Utilities for AnyDBM module implementators} *)
+(** {6 Utilities for AnyDBM module implementators} *)
+module AnyDBMUtils: sig
 
-(** Utility function for implementators *)
-class virtual anyDBM_Base : string -> open_flag -> int ->
-object
-  method private can_write : bool
-  method private can_read : bool
-  method private assert_write : unit
-  method private assert_read : unit
-    
-  method private virtual do_add : string -> string -> unit
-  method add: string -> string -> unit
+  (** Given flags of the style open_flag, return a new-style anydbm_open_flag
+  *)
+  val flags_old_to_new: open_flag list -> anydbm_open_flag
 
-  method private virtual do_find: string -> string
-  method find: string -> string
+  (** Given flags of anydbm_open_flag, return old-style open_flag *)
+  val flags_new_to_old: anydbm_open_flag -> open_flag list
 
-  method private virtual do_replace: string -> string -> unit
-  method replace: string -> string -> unit
+  (** Given flags of the new style, return flags for Pervasives open_gen
+    functions.  The flagbase parameter should be [Open_rdonly] or
+    [Open_wronly] depending on whether you are reading or writing primarily.
+  *)
+  val flags_new_to_open: anydbm_open_flag -> Pervasives.open_flag -> Pervasives.open_flag list
 
-  method private virtual do_remove: string -> unit
-  method remove: string -> unit
+  (** Utility class for implementators *)
+  class virtual anyDBM_Base : anydbm_open_flag -> 
+  object
+    method private can_write : bool
+    method private can_read : bool
+    method private assert_write : unit
+    method private assert_read : unit
+      
+    method private virtual do_add : string -> string -> unit
+    method add: string -> string -> unit
 
-  method private virtual do_iter: (string -> string -> unit) -> unit
-  method iter: (string -> string -> unit) -> unit
+    method private virtual do_find: string -> string
+    method find: string -> string
+
+    method private virtual do_replace: string -> string -> unit
+    method replace: string -> string -> unit
+
+    method private virtual do_remove: string -> unit
+    method remove: string -> unit
+
+    method private virtual do_iter: (string -> string -> unit) -> unit
+    method iter: (string -> string -> unit) -> unit
+  end
+
 end
