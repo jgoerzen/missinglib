@@ -21,9 +21,17 @@ module Cptypes = ConfigParser_types;;
 open Cptypes;;
 open Hashtbl;;
 open Hashtblutil;;
+open ConfigParser_interp;;
 
 exception DuplicateSectionError;;
 exception InvalidBool of string;;
+
+let deh default f =
+  try (f ()) with
+    Not_found as exc -> 
+      match default with
+        None -> raise exc 
+      | Some x -> x;;
 
 class rawConfigParser = 
   object(self)
@@ -50,11 +58,14 @@ class rawConfigParser =
     method readstring istring =
       let ast = ConfigParser_runparser.parse_string istring in
       convert_list_file configfile self#optionxform ast 
-    method get sname oname = 
+    method get ?default sname oname = deh default 
+      (fun () -> self#getdata sname oname)
+    method private getdata sname oname = 
       try
         find (self#section_h sname) (self#optionxform oname)
       with Not_found -> find (self#section_h "DEFAULT") (self#optionxform oname)
-    method getint sname oname = int_of_string (self#get sname oname)
+    method getint ?default sname oname = deh default
+      (fun () -> int_of_string (self#get sname oname))
     method getfloat sname oname = float_of_string (self#get sname oname)
     method private getbool_isyes value =
       List.mem (String.lowercase value) ["1"; "yes"; "true"; "on"; "enabled"]
