@@ -56,3 +56,16 @@ returns the remaining elements.
 Raises Failure on invalid arguments or if n is greater than the length of
 the list. *)
 val drop: int -> 'a list -> 'a list
+
+(** {6 Processing Utilities}
+
+These functions do something with a list. *)
+
+(** Given a list of lines, output a line containing each element from the list.
+The list is expected to not have newlines; those will be added automatically.
+*)
+val output_lines: out_channel -> string list -> unit
+
+(** Given a list of chars, output the characters representing each element
+from the list. *)
+val output_chars: out_channel -> char list -> unit

@@ -23,6 +23,13 @@ let rec mapassert_equal msg f = function
 | x :: xs -> (assert_equal ~msg:msg (f (fst x)) (snd x);
               mapassert_equal msg f xs);;
 
+let string_printer (x:string) = x;;
+
+let rec mapassert_equal_str msg f = function
+    [] -> ()
+  | x :: xs -> (assert_equal ~msg:msg ~printer:string_printer (snd x) (f (fst x));
+                mapassert_equal_str msg f xs);;
+
 let test_mapassert_equal () =
   mapassert_equal "test1" (fun x -> if x < 10 then x else x + 10)
     [(1, 1); (5, 5); (8, 8)];;
@@ -32,7 +39,6 @@ let test_mapassert_equal () =
 
 let suite = "testutil" >::: ["mapassert_equal" >:: test_mapassert_equal];;
 
-let string_printer (x:string) = x;;
 let string_equal msg x y = assert_equal ~printer:string_printer ~msg:msg x y;;
 
 let str_list_printer (x:string list) = 

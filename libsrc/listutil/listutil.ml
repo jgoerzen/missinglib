@@ -60,3 +60,8 @@ let rec drop n l = match n with
     0 -> l
   | n -> if n < 1 then raise (Failure "drop list") else drop (n-1) (tl l);;
 
+let output_lines ofd l = 
+  iter (fun line -> output_string ofd line; output_char ofd '\n') l;;
+
+let output_chars ofd l =
+  iter (fun c -> output_char ofd c) l;;

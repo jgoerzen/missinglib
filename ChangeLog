@@ -2,6 +2,28 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-06-17 22:02:46 GMT	John Goerzen <jgoerzen@complete.org>	patch-36
+
+    Summary:
+      Working on abspath
+    Revision:
+      missinglib--head--0.0--patch-36
+
+
+    new files:
+     test/testfileutil.ml
+
+    modified files:
+     ChangeLog README debian/changelog libsrc/Makefile
+     libsrc/compose/compose.mli libsrc/compose/composeoper.mli
+     libsrc/fileutil/fileutil.ml libsrc/fileutil/fileutil.mli
+     libsrc/listutil/listutil.ml libsrc/listutil/listutil.mli
+     libsrc/streamutil/streamutil.ml
+     libsrc/streamutil/streamutil.mli libsrc/unixutil/unixutil.ml
+     libsrc/unixutil/unixutil.mli test/Makefile test/runtests.ml
+     test/testutil.ml
+
+
 2004-06-17 20:30:26 GMT	John Goerzen <jgoerzen@complete.org>	patch-35
 
     Summary:

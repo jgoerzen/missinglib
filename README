@@ -5,15 +5,49 @@ What is Missinglib?
 It's a collection of OCaml-related utilities.  The following modules are
 are provided:
 
+Compose                 Utilities for chaining functions together
+
+Composeoper             Haskell-like operators for chaining functions
+
 ConfigParser            System for parsing configuration files
+                        These configuration files can have multiple
+                        sections and resemble .INI files.  This module
+                        is designed to be mostly compatible with
+                        Python's ConfigParser module.
+                       
 Hashtbloper             Hash table convenience operators
+
 Hashtblutil             Hash table utilities
+
 Lexingutil              Lexing-related utilities
+
 Listutil                List-manipulation utilities
+                        Functions are provided to help extract
+                        portions of lists and be more convenient
+                        for association lists.  Also, lists of strings
+                        or chars can be written directly to output channels.
+                        
 Slice                   Underlying API for Slice operators
+
 Sliceoper               Flexible subparts of arrays, lists, and strings
-Streamutil              Stream parser utilities
+
+Streamutil              Stream parser, conversion, and creation utilities
+                        Provides features to create streams the yield
+                        the lines of an input channel, convert finite
+                        streams to lists, map and filter streams
+                        (similar to those functions on lists), and
+                        fold streams.
+                        
 Strutil                 String-related utilities
+                        Includes functions to strip whitespace from
+                        the beginning or end of strings, to split
+                        strings into lists by whitespace or a custom
+                        delimeter, etc.
+
+Unixutil                Operating system utilities
+                        Includes functions to process directories
+                        (possibly recursively) and test for file
+                        existence.
 
 The entire library has no prerequisites save the OCaml standard library and
 findlib and is designed to install without complexity on a variety of

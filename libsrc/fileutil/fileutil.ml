@@ -21,3 +21,28 @@ let getlines filename =
   !retval;
 ;;
 
+let abspath ?startdir filename =
+  if not (Filename.is_relative filename) then
+    filename
+  else
+    let s = match startdir with
+        None -> Sys.getcwd ()
+      | Some x -> x in
+    let rec proclist l =
+      print_endline ("proclist " ^ (Strutil.join "/" l));
+      match l with 
+          [] -> []
+        | "" :: xs -> proclist xs
+        | "." :: xs -> proclist xs
+        | x :: ".." :: xs -> proclist xs
+        | ".." :: xs -> raise (Failure "proclist: .. at bad place")
+        | x :: xs -> begin 
+            if (List.mem ".." xs) then proclist (x :: proclist xs) else
+              x :: proclist xs
+          end
+    in
+    let components = (Strutil.split "/" s) @ (Strutil.split "/" filename) in
+    Strutil.join "/" ("" :: proclist components);;
+
+  
+  

@@ -1,3 +1,14 @@
+missinglib (0.4.1) unstable; urgency=low
+
+  * New features for Streamutil: building streams of lines in an input
+    file, filtering and mapping streams, converting streams to lists.
+
+  * New feature for Listutil: take/drop functions like Haskell.
+
+  * Updated README.
+
+ -- John Goerzen <jgoerzen@complete.org> Thu, 17 Jun 2004 15:30:31 -0500
+
 missinglib (0.4.0) unstable; urgency=low
 
   * New class: configParser, supporting interpolation.

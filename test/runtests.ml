@@ -27,6 +27,7 @@ let alltests = "infrastructuresuite" >::: ["infrasuie" >: infrasuite;
    "streamutil" >: Teststreamutil.suite;
    "listutil" >: Testlistutil.suite;
    "hashtblutil" >: Testhashtblutil.suite;
+   "fileutil" >: Testfileutil.suite;
    "configparser" >: Testconfigparser.suite];;
 
 let main = run_test_tt_main alltests;;
