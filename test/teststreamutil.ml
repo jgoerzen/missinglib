@@ -55,10 +55,18 @@ let test_map () =
   let s = map string_of_int (finstream ()) in
   assert_equal ~msg:"map" ["0"; "1"; "2"; "3"; "4"] (to_list s);;
 
+let test_fold_left () =
+  let s = map string_of_int (finstream ()) in
+  assert_equal ~msg:"foldl1" 10 (fold_left 
+                                   (fun prev elem -> prev + (int_of_string elem))
+                                   0 s);
+  assert_equal ~msg:"emptyfoldl" 42 (fold_left (fun x y -> x + y) 42 [< >]);;
+
 let suite = "teststreamutil" >:::
               ["to_list" >:: test_to_list;
                "take" >:: test_take;
                "drop" >:: test_drop;
                "filter" >:: test_filter;
+               "fold_left" >:: test_fold_left;
                "map" >:: test_map];;
 

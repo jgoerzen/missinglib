@@ -2,6 +2,19 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-07-21 21:21:24 GMT	John Goerzen <jgoerzen@complete.org>	patch-40
+
+    Summary:
+      Added Streamutil.fold_left; this is 0.4.2
+    Revision:
+      missinglib--head--0.0--patch-40
+
+
+    modified files:
+     ChangeLog debian/changelog libsrc/streamutil/streamutil.ml
+     libsrc/streamutil/streamutil.mli test/teststreamutil.ml
+
+
 2004-06-18 01:14:09 GMT	John Goerzen <jgoerzen@complete.org>	patch-39
 
     Summary:

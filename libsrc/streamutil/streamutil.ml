@@ -52,6 +52,10 @@ let rec map_stream func = parser
     [< 'x; xs >] -> [< func x; map_stream func xs >]
   | [< >] -> [< >];;
 
+let rec fold_left func firstval = parser
+    [< 'x; xs >] -> fold_left func (func firstval x) xs
+  | [< >] -> firstval;;
+
 let rec to_list = parser
     [< 'x; xs >] -> x :: to_list xs
   | [< >] -> [];;

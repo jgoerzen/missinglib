@@ -59,6 +59,10 @@ and return a stream.  This is a powerful capability that allows func
 to grow or shrink the results of processing the single element. *)
 val map_stream: ('a -> 'b Stream.t) -> 'a Stream.t -> 'b Stream.t
 
+(** Given a function and an initial argument, calls the function on
+each element in the stream.  Similar to List.fold_left. *)
+val fold_left: ('a -> 'b -> 'a) -> 'a -> 'b Stream.t -> 'a
+
 (** Converts a stream to a list.  WARNING: this will crash your program if
 used on infinite or very large streams.  Use only on finite streams! *)
 val to_list: 'a Stream.t -> 'a list
