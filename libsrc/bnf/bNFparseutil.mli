@@ -40,16 +40,27 @@ val eof: 'a Stream.t -> unit
 
 (** {6 Character-Specific Parsing Utilities} *)
 
+(** Default value for case-insensitive comparisons.  Defaults to false,
+    meaning comparisons are case-sensitive.  Optional [i] arguments
+    to functions in this module take a bool specifying whether or not
+    to use case-insensitive comparisons.  The default value for [i] in
+    those functions is this value. *)
+val insens: bool
+
 (** Used for parsing character ranges *)
 type repatt =
     C of char                           (** Match a single character *)
   | R of char * char                    (** Match a single character within the inclusive range of the two characters given *)
 
 (** Stream parser: find a single character in the given range. *)
-val range: repatt list -> char Stream.t -> char
+val range: ?i:bool -> repatt list -> char Stream.t -> char
 
 (** Stream parser: find any character NOT in the given range. *)
-val range_n: repatt list -> char Stream.t -> char
+val range_n: ?i:bool -> repatt list -> char Stream.t -> char
+
+(** Returns the character given by the specified integer; an alias for
+    [Char.chr]. *)
+val chr: int -> char
 
 (** This function is useful for parsing zero or more occurances of a certain
     element.  Similar to {!Streamutil.optparse}, but works only on

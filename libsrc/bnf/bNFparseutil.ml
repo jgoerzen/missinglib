@@ -19,7 +19,14 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 open Stream;;
 
+let insens = false;;
+
 type repatt = C of char | R of char * char;;
+
+(* Transforms the character to the lowercase format if case-insensitivty is
+used. *)
+let cx isinsens c =
+  if isinsens then Char.lowercase c else c;;
 
 let optparse func args =
   Strutil.string_of_charlist (Streamutil.optparse func [] args);;
@@ -27,25 +34,27 @@ let optparse func args =
 let optparse_1 funchead args =
   Strutil.string_of_charlist (Streamutil.optparse_1 funchead funchead [] args);;
 
-let test_char_patt patt c = match patt with
+let test_char_patt ?(i=insens) patt c = 
+  let c = cx i c in
+  match patt with
     C x -> c = x
   | R (x, y) -> x <= c && c <= y;;
 
-let rec test_range pattlist c = match pattlist with
+let rec test_range ?(i=insens) pattlist c = match pattlist with
     [] -> false
-  | x :: xs -> if test_char_patt x c then true else test_range xs c;;
+  | x :: xs -> if test_char_patt ~i:i x c then true else test_range ~i:i xs c;;
 
-let range pattlist stream =
+let range ?(i=insens) pattlist stream =
   match Stream.peek stream with
       None -> raise Stream.Failure
-    | Some c -> (if test_range pattlist c then (Stream.junk stream; c)
+    | Some c -> (if test_range ~i:i pattlist c then (Stream.junk stream; c)
                  else raise Stream.Failure);;
 
-let range_n pattlist stream =
+let range_n ?(i=insens) pattlist stream =
   match Stream.peek stream with
       None -> raise Stream.Failure
     | Some c -> (
-        if not (test_range pattlist c) then (Stream.junk stream; c)
+        if not (test_range ~i:i pattlist c) then (Stream.junk stream; c)
         else raise Stream.Failure);;
 (*
 let s_or test1 test2 istream =
@@ -63,15 +72,17 @@ let s_or test1 test2 istream =
 ;;
 *)
 
+let chr = Char.chr;;
+
 let s_and predlist istream =
   if predlist = [] then raise (Stream.Error "Predicate list empty in s_and")
   else begin
     let procitem item =
-      let cs = new BNFSupport.lazyStream istream in
-      (cs, item cs) in
-    let processed = List.map procitem prodlist in
-    (fst (hd processed))#consume_stream;
+      let cs = new BNFsupport.lazyStream istream in
+      (cs, item cs#to_stream) in
+    let processed = List.map procitem predlist in
+    (fst (List.hd processed))#consume_stream;
     List.map snd processed;
   end;;
 
-let eof = String.empty;;
+let eof = Stream.empty;;

@@ -45,7 +45,8 @@ SOURCES = compose/compose.mli compose/compose.ml \
 	  anyDBM/anyDBM_String.mli \
 	  anyDBM/anyDBM_String.ml \
 	  bnf/bNFparseutil.mli \
-	  bnf/bNFparseutil.mli
+	  bnf/bNFparseutil.mli \
+	  bnf/aBNF_core.ml
 
 
 INCLDIRS = -I strutil -I compose -I hashtblutil -I listutil -I lexingutil -I slice \
