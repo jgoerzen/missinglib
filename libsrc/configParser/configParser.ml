@@ -41,7 +41,7 @@ class rawConfigParser =
 object(self)
   initializer self#add_section "DEFAULT"
   val configfile = make_file ()
-  val mutable getdata = fun obj sname oname -> obj#maingetdata sname oname
+  method private getdata sname oname = self#maingetdata sname oname
   method maingetdata sname oname =
     try
       find (self#section_h sname) (self#optionxform oname)
@@ -68,11 +68,11 @@ object(self)
     let ast = ConfigParser_runparser.parse_string istring in
     convert_list_file configfile self#optionxform ast 
   method get ?default =
-    def default (fun x -> x) (getdata self)
+    def default (fun x -> x) (self#getdata)
   method getint ?default =
-    def default int_of_string (getdata self)
+    def default int_of_string (self#getdata)
   method getfloat ?default = 
-    def default float_of_string (getdata self)
+    def default float_of_string (self#getdata)
   method private getbool_isyes value =
     List.mem (String.lowercase value) ["1"; "yes"; "true"; "on"; "enabled"]
   method private getbool_isno value =
@@ -83,7 +83,7 @@ object(self)
         raise (InvalidBool v)
 
   method getbool ?default = 
-    def default self#bool_of_string (getdata  self)
+    def default self#bool_of_string (self#getdata)
   method items sname = items (self#section_h sname)
   method set sname oname value =
     let s = self#section_h sname in
@@ -110,12 +110,12 @@ exception Interpolation_error of string;;
 class configParser =
 object(self)
   inherit rawConfigParser as super
-  initializer getdata <- 
     (*
     fun ?(raw=false) ?(idepth=10) ?extravars obj sname oname ->
       obj#maininterpgetdata raw idepth extravars sname oname
     *)
-    fun obj sname oname -> obj#maininterpgetdata false 10 None sname oname
+  method private getdata sname oname = 
+    self#maininterpgetdata false 10 None sname oname
   method private maininterpgetdata raw idepth extravars sname oname =
     if raw then self#maingetdata sname oname else
       self#getdata_interp idepth false extravars sname oname

@@ -2,6 +2,19 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-06-05 16:32:56 GMT	John Goerzen <jgoerzen@complete.org>	patch-24
+
+    Summary:
+      Adjusted getdata to new system
+    Revision:
+      missinglib--head--0.0--patch-24
+
+
+    modified files:
+     ChangeLog libsrc/configParser/configParser.ml
+     {arch}/=tagging-method
+
+
 2004-06-05 16:29:40 GMT	John Goerzen <jgoerzen@complete.org>	patch-23
 
     Summary:
