@@ -65,12 +65,12 @@ class rawConfigParser =
       try
         find (self#section_h sname) (self#optionxform oname)
       with Not_found -> find (self#section_h "DEFAULT") (self#optionxform oname)
-    method get ?default sname oname =
-      def default (fun x -> x) self#getdata sname oname
-    method getint ?default sname oname =
-      def default int_of_string self#getdata sname oname
-    method getfloat ?default sname oname = 
-      def default float_of_string self#getdata sname oname
+    method get ?default =
+      def default (fun x -> x) self#getdata
+    method getint ?default =
+      def default int_of_string self#getdata
+    method getfloat ?default = 
+      def default float_of_string self#getdata
     method private getbool_isyes value =
       List.mem (String.lowercase value) ["1"; "yes"; "true"; "on"; "enabled"]
     method private getbool_isno value =
@@ -80,8 +80,8 @@ class rawConfigParser =
         if self#getbool_isno v then false else
           raise (InvalidBool v)
 
-    method getbool ?default sname oname = 
-      def default self#bool_of_string self#getdata sname oname
+    method getbool ?default = 
+      def default self#bool_of_string self#getdata 
     method items sname = items (self#section_h sname)
     method set sname oname value =
       let s = self#section_h sname in
