@@ -2,6 +2,19 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-08-03 20:02:16 GMT	John Goerzen <jgoerzen@complete.org>	patch-48
+
+    Summary:
+      Now supports close
+    Revision:
+      missinglib--head--0.0--patch-48
+
+
+    modified files:
+     ChangeLog libsrc/anyDBM/anyDBM_Interface.ml
+     libsrc/anyDBM/anyDBM_Interface.mli
+
+
 2004-08-03 20:00:03 GMT	John Goerzen <jgoerzen@complete.org>	patch-47
 
     Summary:

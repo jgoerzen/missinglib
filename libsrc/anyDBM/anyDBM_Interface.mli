@@ -39,7 +39,7 @@ end
 
 exception Dbm_error of string
 
-(* val close: t -> unit *)
+val close: t -> unit
 val find: t -> string -> string
 val add: t -> string -> string -> unit
 val replace: t -> string -> string -> unit

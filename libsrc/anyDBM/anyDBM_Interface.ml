@@ -52,7 +52,7 @@ object
 end;;
 
 
-(* let close (db:t) = db#close;; *)
+let close (db:t) = db#close;;
 let find (db:t) = db#find;;
 let add db = db#add;;
 let replace db = db#replace;;
