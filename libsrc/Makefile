@@ -37,9 +37,10 @@ SOURCES = compose/compose.mli compose/compose.ml \
 	  configParser/configParser_interp.ml \
 	  configParser/configParser.mli \
 	  configParser/configParser.ml \
-	  anydbm/interface.ml
+	  anyDBM/anyDBM_Interface.mli \
+	  anyDBM/anyDBM_Interface.ml
 OCAMLDOC = ocamldoc -pp camlp4o -stars -sort -I strutil -I compose -I hashtblutil -I listutil -I lexingutil -I slice \
-	   -I anydbm \
+	   -I anyDBM \
 	    -I configParser -I fileutil -I unixutil -I streamutil
 #LIBS = str
 RESULT = missinglib
@@ -57,7 +58,8 @@ DOC_FILES := compose/compose.mli compose/compose.ml \
 	slice/slice.mli slice/slice.ml \
 	slice/sliceoper.mli slice/sliceoper.ml \
 	configParser/configParser.mli \
-	anydbm/interface.ml
+	anyDBM/anyDBM_Interface.mli \
+	anyDBM/anyDBM_Interface.ml
 
 MLIFILES := $(filter %.mli,$(SOURCES))
 LIBINSTALL_FILES := META $(MLIFILES) $(patsubst %.mli,%.cmi,$(MLIFILES)) $(RESULT).cma $(RESULT).a

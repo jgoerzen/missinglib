@@ -16,20 +16,13 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *)
 
-(** {6 Generic interface for DBM modules}
-
-This module is used to provide a generic interface to various local flat-file
-modules in OCaml.  Various AnyDBM implementations will use these definitions.
-*)
-
-(** Flags used for opening a database.  See
-{!AnyDBM.Interface.t}. *)
 type open_flag = Dbm_rdonly | Dbm_wronly | Dbm_rdwr | Dbm_create;;
 
 exception Dbm_error of string;;
 
 (** Implementations of AnyDBM must provide an implementing object
 of type t. *)
+
 class type t =
 object
 
@@ -55,12 +48,13 @@ object
 
   (** iter f db applies f to each (key, data) pair in the database db.  f
   receives key as frist argument and data as second argument. *)
-  method iter : (string -> string -> 'a) -> unit
+  method iter : (string -> string -> unit) -> unit
 end;;
 
-let close db = db#close ();;
-let find db = db#find;;
+
+(* let close (db:t) = db#close;; *)
+let find (db:t) = db#find;;
 let add db = db#add;;
 let replace db = db#replace;;
 let remove db = db#remove;;
-let iter db = db#iter;;
+let iter func (db:t) = db#iter func;;
