@@ -1,7 +1,7 @@
 Source: missinglib
 Priority: optional
 Maintainer: John Goerzen <jgoerzen@complete.org>
-Build-Depends: debhelper (>= 4.0.0), ocaml-3.07, ocaml-base, ocaml-tools (>= 2004.04.10-1), ocaml-findlib, ocaml
+Build-Depends: debhelper (>= 4.0.0), ocaml-3.07, ocaml-base, ocaml-tools (>= 2004.04.10-1), ocaml-findlib, ocaml, libounit-ocaml-dev
 Standards-Version: 3.6.0
 
 Package: libmissinglib-ocaml-dev

@@ -1,3 +1,9 @@
+missinglib (0.0.1-2) unstable; urgency=low
+
+  * Added build-dep on libounit-ocaml-dev.  Closes: #248223.
+
+ -- John Goerzen <jgoerzen@complete.org>  Tue, 25 May 2004 10:39:32 -0500
+
 missinglib (0.0.1-1) unstable; urgency=low
 
   * Initial Release.  Closes: #245510.

@@ -2,6 +2,18 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-05-25 15:41:30 GMT	John Goerzen <jgoerzen@complete.org>	patch-19
+
+    Summary:
+      Merged in libounit-ocaml-dev fix
+    Revision:
+      missinglib--head--0.0--patch-19
+
+
+    modified files:
+     ChangeLog debian/changelog debian/control
+
+
 2004-04-30 04:58:14 GMT	John Goerzen <jgoerzen@complete.org>	patch-18
 
     Summary:
