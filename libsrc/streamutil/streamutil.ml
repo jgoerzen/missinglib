@@ -1,3 +1,4 @@
+(*pp camlp4o *)
 (* arch-tag: Stream parser-related utilities
 Copyright (C) 2004 John Goerzen <jgoerzen@complete.org>
 
@@ -16,7 +17,61 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *)
 
-(** Stream parser utilities *)
+open Composeoper;;
+
+(** Stream creation, parsing, and manipulation utilities 
+
+@author Copyright (C) 2004 John Goerzen <jgoerzen\@complete.org>
+*)
+
+(** {6 Stream generation}
+
+These functions create new streams. *)
+
+(** Given an input file descriptor, generates a stream that yields
+each line of the input file. *)
+let rec of_channel_lines ifd = 
+  match (try Some (input_line ifd) with End_of_file -> None) with
+      None -> [< >]
+    | Some line -> [< 'line; of_channel_lines ifd >];;
+
+(** {6 Stream Conversion Utilities}
+
+These utilities work on streams, returning a new lazy stream that
+reflects the changes. *)
+
+(** Given a function, returns a new stream with all the elements of the
+original stream for which func returns true. *)
+let rec filter func = parser
+    [< 'x; xs >] -> if func x then [< 'x; filter func xs >] else 
+      [< filter func xs >];;
+
+(** Given a function, returns a new stream with the results of func
+applied to each element. *)
+let rec map func = parser
+    [< 'x; xs >] -> [< 'func x; map func xs >];;
+
+(** Converts a stream to a list.  WARNING: this will crash your program if
+used on infinite or very large streams.  Use only on finite streams! *)
+let rec to_list = parser
+    [< 'x; xs >] -> x :: to_list xs
+  | [< >] -> [];;
+
+(** Returns a finite stream representing the first n elements from
+the given stream. *)
+let rec take n s = 
+  let p = parser [< 'x; xs >] -> [< 'x; take (n - 1) xs >] in
+  match n with
+    0 -> [< >]
+  | n -> if n < 1 then raise Not_found else p s;;
+
+(** Removes the first n elements from the start of the given stream.
+*)
+let drop n s = ignore (take n s);;
+
+(** {6 Stream parser utilities}
+
+These functions are used to parse streams. *)
 
 (** This function is useful for parsing zero or more occurances of a certain
     element.

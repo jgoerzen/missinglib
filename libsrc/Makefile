@@ -38,7 +38,7 @@ SOURCES = compose/compose.mli compose/compose.ml \
 	  configParser/configParser.mli \
 	  configParser/configParser.ml
 OCAMLDOC = ocamldoc -stars -sort -I strutil -I compose -I hashtblutil -I listutil -I lexingutil -I slice \
-	    -I configParser
+	    -I configParser -I fileutil -I unixutil -I streamutil
 #LIBS = str
 RESULT = missinglib
 OCAMLYACC := ocamlyacc -v

@@ -16,7 +16,7 @@
 #    along with this program; if not, write to the Free Software
 #    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-SOURCES = testutil.ml teststrutil.ml testlistutil.ml testhashtblutil.ml \
+SOURCES = testutil.ml teststrutil.ml teststreamutil.ml testlistutil.ml testhashtblutil.ml \
 	  testconfigparser.ml runtests.ml
 INCDIRS = ../libsrc $(shell find ../libsrc -type d -maxdepth 1 )
 LIBDIRS = ../libsrc

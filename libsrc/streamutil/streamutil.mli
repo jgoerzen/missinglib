@@ -22,3 +22,9 @@ val optparse_1: ('a -> 'b) -> ('a -> 'b) -> 'b list -> 'a -> 'b list
 val optparse_1_folded: ('a -> 'b) -> ('c -> 'b -> 'c) -> 'c -> 'a -> 'c
 val optparse_1_string: ('a -> string) -> 'a -> string
 
+val of_channel_lines: in_channel -> string Stream.t
+val filter: ('a -> bool) -> 'a Stream.t -> 'a Stream.t
+val map: ('a -> 'b) -> 'a Stream.t -> 'b Stream.t
+val to_list: 'a Stream.t -> 'a list
+val take: int -> 'a Stream.t -> 'a Stream.t
+val drop: int -> 'a Stream.t -> unit

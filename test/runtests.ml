@@ -24,6 +24,7 @@ let infrasuite = "infrastructure" >::: ["test1" >:: test1];;
 let alltests = "infrastructuresuite" >::: ["infrasuie" >: infrasuite;
    "testutil" >: Testutil.suite;
    "strutil" >: Teststrutil.suite;
+   "streamutil" >: Teststreamutil.suite;
    "listutil" >: Testlistutil.suite;
    "hashtblutil" >: Testhashtblutil.suite;
    "configparser" >: Testconfigparser.suite];;

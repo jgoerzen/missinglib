@@ -2,6 +2,23 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/missinglib--head--0.0
 #
 
+2004-06-17 18:33:20 GMT	John Goerzen <jgoerzen@complete.org>	patch-33
+
+    Summary:
+      Starting tests
+    Revision:
+      missinglib--head--0.0--patch-33
+
+
+    new files:
+     test/teststreamutil.ml
+
+    modified files:
+     ChangeLog libsrc/Makefile libsrc/streamutil/streamutil.ml
+     libsrc/streamutil/streamutil.mli test/Makefile
+     test/runtests.ml
+
+
 2004-06-17 15:58:20 GMT	John Goerzen <jgoerzen@complete.org>	patch-32
 
     Summary:
