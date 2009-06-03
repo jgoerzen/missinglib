@@ -54,7 +54,7 @@ let test_merge () =
 
 let test_str () =
   let s = str_of_stritem "black\n" "white" in
-  assert_equal ~msg:"first" "\"black\\n\":\"white\"\n" s;
+  assert_equal ~msg:"first" "\"black\\n\",\"white\"\n" s;
   assert_equal ~msg:"result" ("black\n", "white")
     (stritem_of_str s);;
 
